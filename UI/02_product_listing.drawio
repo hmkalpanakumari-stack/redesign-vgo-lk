@@ -1,0 +1,109 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="product-listing-wireframe" name="Product Listing">
+    <mxGraphModel dx="1895" dy="1138" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="2400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="header-placeholder" value="[HEADER - Same as Homepage]&#xa;VGO Logo | Search Bar | User | Compare | Cart" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#004E89;strokeColor=#004E89;fontColor=#FFFFFF;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry width="1440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="breadcrumb" value="Home &amp;gt; Electronics &amp;gt; Mobile Phones" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="40" y="140" width="1360" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="page-header" value="Mobile Phones                                                                                           1,234 Products" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="40" y="208" width="1360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="page-subheader" value="Showing 1-24 of 1,234 results" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="40" y="258" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="main-container" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry y="298" width="1440" height="1800" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-sidebar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="40" y="298" width="280" height="1800" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-header" value="Filters                              Clear All" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="60" y="318" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="active-filters-box" value="Active Filters (3)&#xa;&#xa;[Samsung ×]  [Rs. 20K-50K ×]  [In Stock ×]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#FF6B35;fontSize=12;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="368" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-category" value="Category                                  ▼&#xa;───────────────────────&#xa;☐ All Mobile Phones&#xa;☐ Smartphones (845)&#xa;☐ Feature Phones (123)&#xa;☐ Accessories (456)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="488" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-price" value="Price Range                              ▼&#xa;───────────────────────&#xa;Rs. 5,000 ═══●═══ 150K&#xa;&#xa;Min: [5,000]    Max: [150,000]&#xa;&#xa;☐ Under Rs. 10,000&#xa;☐ Rs. 10K - Rs. 25K&#xa;☐ Rs. 25K - Rs. 50K" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="648" width="240" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-brand" value="Brand                                      ▼&#xa;───────────────────────&#xa;[Search brands...]&#xa;&#xa;☐ Samsung (234)&#xa;☐ Apple (156)&#xa;☐ Huawei (98)&#xa;☐ Xiaomi (167)&#xa;+ Show 12 More" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="868" width="240" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-rating" value="Customer Rating                      ▼&#xa;───────────────────────&#xa;☐ ★★★★★ &amp;amp; Up (567)&#xa;☐ ★★★★☆ &amp;amp; Up (891)&#xa;☐ ★★★☆☆ &amp;amp; Up (1,123)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1068" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="filter-availability" value="Availability                               ▼&#xa;───────────────────────&#xa;☐ In Stock (1,045)&#xa;☐ Out of Stock (189)&#xa;☐ Pre-order (12)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1228" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="toolbar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="360" y="298" width="1040" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="toolbar-sort" value="Sort by: [Relevance ▼]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="380" y="313" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="toolbar-view" value="[Grid ] [List ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="308" width="120" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="toolbar-perpage" value="24/page ▼" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="313" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-1" value="-45%&#xa;[IMG]&#xa;♡&#xa;&#xa;Samsung&#xa;Galaxy S24 Ultra&#xa;★★★★★ 4.8 (245)&#xa;&#xa;Rs. 45,000&#xa;Rs. 82,000&#xa;✓ Free  ✓ Stock&#xa;&#xa;[Add to Cart]&#xa;[Compare]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="360" y="374" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-2" value="-30%&#xa;[IMG]&#xa;♡&#xa;&#xa;Apple&#xa;iPhone 14 Pro Max&#xa;★★★★★ 5.0 (678)&#xa;&#xa;Rs. 385,000&#xa;&#xa;✓ Free  ✓ Stock&#xa;&#xa;[Add to Cart]&#xa;[Compare]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="620" y="374" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-3" value="NEW&#xa;[IMG]&#xa;♡&#xa;&#xa;Huawei&#xa;P50 Pro&#xa;★★★★☆ 4.5 (134)&#xa;&#xa;Rs. 125,000&#xa;&#xa;✓ Free  ✓ Stock&#xa;&#xa;[Add to Cart]&#xa;[Compare]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="880" y="374" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-4" value="[IMG]&#xa;♡&#xa;&#xa;Xiaomi&#xa;13 Pro&#xa;★★★★☆ 4.3 (289)&#xa;&#xa;Rs. 68,000&#xa;&#xa;✓ Free  ✓ Stock&#xa;&#xa;[Add to Cart]&#xa;[Compare]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="374" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-5" value="[IMG]&#xa;♡&#xa;&#xa;Samsung&#xa;Galaxy A54&#xa;★★★★☆ 4.4&#xa;&#xa;Rs. 85,000&#xa;&#xa;[Add to Cart]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="360" y="754" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-6" value="[IMG]&#xa;♡&#xa;&#xa;OnePlus&#xa;11 5G&#xa;★★★★★ 4.7&#xa;&#xa;Rs. 95,000&#xa;&#xa;[Add to Cart]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="620" y="754" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-7" value="[IMG]&#xa;♡&#xa;&#xa;Google&#xa;Pixel 8 Pro&#xa;★★★★☆ 4.6&#xa;&#xa;Rs. 175,000&#xa;&#xa;[Add to Cart]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="880" y="754" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-8" value="[IMG]&#xa;♡&#xa;&#xa;Oppo&#xa;Find X5 Pro&#xa;★★★★☆ 4.2&#xa;&#xa;Rs. 115,000&#xa;&#xa;[Add to Cart]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="754" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-9" value="[Product 9]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="360" y="1134" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-10" value="[Product 10]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="620" y="1134" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-11" value="[Product 11]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="880" y="1134" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="prod-12" value="[Product 12]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=11;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="1134" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="more-products" value="[... 12 more products in rows 4-6 ...]" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="640" y="1534" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pagination-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="360" y="1914" width="1040" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pagination" value="[Previous]  1  2  [3]  4  5 ... 52  [Next]" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="640" y="1939" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pagination-info" value="Showing 49-72 of 1,234 results" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="640" y="1979" width="480" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

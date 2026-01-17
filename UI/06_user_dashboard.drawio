@@ -1,0 +1,70 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="user-dashboard" name="User Dashboard">
+    <mxGraphModel dx="1603" dy="963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="2600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="[HEADER - VGO Logo | Search | User | Cart]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#004E89;strokeColor=#004E89;fontColor=#FFFFFF;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry width="1440" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="My Account" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="140" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Home &gt; My Account" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="40" y="190" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="230" width="280" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="┌───────┐&#xa;│ [AVA] │  John Doe&#xa;│ TAR   │  john@email.com&#xa;└───────┘  [Edit Profile]" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="250" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="─────────────────────&#xa;📊 Dashboard&#xa;📦 My Orders&#xa;💝 Wishlist (12)&#xa;🔔 Notifications (3)&#xa;📍 Addresses&#xa;💳 Payment Methods&#xa;🎫 Coupons &amp;amp; Offers&#xa;⚖️ Compare List (4)&#xa;⭐ Reviews &amp;amp; Ratings&#xa;💬 Messages&#xa;🎁 Refer &amp;amp; Earn&#xa;⚙️ Settings&#xa;🚪 Logout&#xa;─────────────────────&#xa;💼 Business Account&#xa;Switch to Business" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="350" width="240" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;" parent="1" vertex="1">
+          <mxGeometry x="360" y="230" width="1040" height="2200" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Welcome back, John! 👋" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="250" width="1000" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="Quick Actions&#xa;[📦 Track Orders]  [🛒 Continue Shopping]  [💝 Wishlist]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="310" width="1000" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="📦&#xa;Active Orders&#xa;&#xa;3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=16;fontStyle=1;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="410" width="230" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="💝&#xa;Wishlist Items&#xa;&#xa;12" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=16;fontStyle=1;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="630" y="410" width="230" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="🎫&#xa;Coupons Available&#xa;&#xa;5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=16;fontStyle=1;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="880" y="410" width="230" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="💰&#xa;Rewards Points&#xa;&#xa;2,450" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=16;fontStyle=1;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1130" y="410" width="230" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Recent Orders                                   [View All →]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="610" width="1000" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="Order #VGO-2024-001234      Jan 25, 2025     [...]&#xa;─────────────────────────────────────────&#xa;[IMG] Samsung Galaxy S24 Ultra + 2 more&#xa;&#xa;Total: Rs. 129,350&#xa;Status: [🚚 In Transit]&#xa;&#xa;[Track Order]  [View Details]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="670" width="1000" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="Order #VGO-2024-001189      Jan 20, 2025&#xa;─────────────────────────────────────────&#xa;[IMG] Apple AirPods Pro + 1 more&#xa;&#xa;Total: Rs. 45,000&#xa;Status: [✓ Delivered]&#xa;&#xa;[⭐ Rate Products]  [View Details]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="890" width="1000" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="My Wishlist (12 items)                         [View All →]&#xa;─────────────────────────────────────────&#xa;[Product 1]  [Product 2]  [Product 3]  [Product 4]&#xa;Rs. 55,000   Rs. 85,000   Rs. 29,000   Rs. 24,500&#xa;[+ Cart]     [+ Cart]     [+ Cart]     [+ Cart]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="1130" width="1000" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="Notifications (3 new)                          [Mark All Read]&#xa;─────────────────────────────────────────&#xa;📦 Order Shipped - Just now&#xa;Your order #VGO-2024-001234 has been shipped&#xa;[Track Order]&#xa;&#xa;💝 Price Drop Alert - 2 hrs ago&#xa;Samsung Galaxy S24 is now Rs. 5,000 cheaper!&#xa;[View Product]&#xa;&#xa;🎁 Special Offer - 5 hrs ago&#xa;Use code SAVE20 for 20% off" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="1450" width="1000" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="Available Coupons&#xa;─────────────────────────────────────────&#xa;[20% OFF]  SAVE20 - 20% Off on All Products&#xa;Valid till: Jan 31, 2025  |  Min: Rs. 5,000&#xa;[Copy Code]  [Apply Now]&#xa;&#xa;[FREE SHIP]  FREESHIP - Free Shipping&#xa;Valid till: Feb 15, 2025  |  Min: Rs. 1,000&#xa;[Copy Code]  [Apply Now]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#FF6B35;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="1810" width="1000" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="Profile Settings&#xa;─────────────────────────────────────────&#xa;Personal Information&#xa;[Avatar Photo]  [Change] [Remove]&#xa;&#xa;First Name: [John]      Last Name: [Doe]&#xa;Email: [john@email.com] [Verified ✓]&#xa;Mobile: [+94 77 123 4567] [Verified ✓]&#xa;&#xa;[Save Changes]&#xa;─────────────────────────────────────────&#xa;Change Password&#xa;Current Password: [_______]&#xa;New Password: [_______]&#xa;Confirm Password: [_______]&#xa;&#xa;[Update Password]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="380" y="2090" width="1000" height="460" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

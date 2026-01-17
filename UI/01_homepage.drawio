@@ -1,0 +1,133 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="homepage-wireframe" name="Homepage">
+    <mxGraphModel dx="2977" dy="1789" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="3000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#333333;" parent="1" vertex="1">
+          <mxGeometry width="1440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="📞 Hotline: 0112 345 678 | 📧 support@vgo.lk" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="10" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;" parent="1" vertex="1">
+          <mxGeometry y="40" width="1440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="VGO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF6B35;strokeColor=#FF6B35;fontColor=#FFFFFF;fontSize=28;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="40" y="55" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="🔍 Search products, brands, categories..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;align=left;fontSize=14;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="250" y="65" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="👤" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="65" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="💼&#xa;3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=16;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1270" y="65" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="🛒&#xa;2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=16;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="65" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#004E89;strokeColor=#004E89;" parent="1" vertex="1">
+          <mxGeometry y="120" width="1440" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="☰ All Categories ▼  |  Electronics  |  Fashion  |  Home &amp; Living  |  Sports  |  Beauty  |  🔥 Deals" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FFFFFF;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="133" width="1000" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#E0E0E0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="216" width="1360" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="🎁" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=150;" parent="1" vertex="1">
+          <mxGeometry x="80" y="256" width="600" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="NEW YEAR MEGA SALE" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=48;fontStyle=1;fontColor=#FF6B35;" parent="1" vertex="1">
+          <mxGeometry x="740" y="296" width="600" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Up to 70% OFF on 10,000+ Products" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=24;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="740" y="376" width="600" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="Shop Now" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF6B35;strokeColor=#FF6B35;fontColor=#FFFFFF;fontSize=18;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="740" y="456" width="180" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="View Deals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#004E89;fontColor=#004E89;fontSize=18;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="950" y="456" width="180" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="Shop by Category" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="40" y="756" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="View All →" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#FF6B35;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="756" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="📱&#xa;&#xa;Electronics&#xa;&#xa;2,500+ products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="40" y="816" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="👗&#xa;&#xa;Fashion&#xa;&#xa;5,000+ products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="270" y="816" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="🏠&#xa;&#xa;Home &amp;amp; Living&#xa;&#xa;1,200+ products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="500" y="816" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="⚽&#xa;&#xa;Sports&#xa;&#xa;800+ products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="730" y="816" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="💄&#xa;&#xa;Beauty&#xa;&#xa;1,500+ products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="960" y="816" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="🎮&#xa;&#xa;Gaming&#xa;&#xa;600+ products" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1190" y="816" width="210" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF5E6;strokeColor=#E0E0E0;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry y="1056" width="1440" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="🔥 Flash Deals" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#FF6B35;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1076" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="⏱️ Ends in: 04:23:15" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="1076" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="-45%&#xa;[IMG]&#xa;♡&#xa;Samsung&#xa;Galaxy S24&#xa;★★★★★ 4.8&#xa;Rs. 45,000&#xa;Rs. 82,000&#xa;✓ Free Ship&#xa;Add to Cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1136" width="210" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="-60%&#xa;[IMG]&#xa;♡&#xa;Apple&#xa;AirPods Pro&#xa;★★★★☆ 4.5&#xa;Rs. 18,000&#xa;Rs. 45,000&#xa;✓ Free Ship&#xa;Add to Cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="270" y="1136" width="210" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="-35%&#xa;[IMG]&#xa;♡&#xa;Dell&#xa;XPS 15&#xa;★★★★★ 4.9&#xa;Rs. 320,000&#xa;Rs. 490,000&#xa;✓ Free Ship&#xa;Add to Cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="500" y="1136" width="210" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="-50%&#xa;[IMG]&#xa;♡&#xa;Sony&#xa;PS5&#xa;★★★★☆ 4.2&#xa;Rs. 125,000&#xa;Rs. 250,000&#xa;✓ Free Ship&#xa;Add to Cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=12;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="730" y="1136" width="210" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry y="1696" width="1440" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="Why Shop with VGO?" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry x="520" y="1716" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="🚚&#xa;FREE SHIPPING&#xa;Orders over Rs. 5K" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#190033;" parent="1" vertex="1">
+          <mxGeometry x="70" y="1776" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="💯&#xa;100% AUTHENTIC&#xa;Genuine brands" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#190033;" parent="1" vertex="1">
+          <mxGeometry x="350" y="1776" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="🔒&#xa;SECURE PAYMENTS&#xa;SSL encrypted" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#190033;" parent="1" vertex="1">
+          <mxGeometry x="630" y="1776" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="⚡&#xa;FAST DELIVERY&#xa;Same-day Colombo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#190033;" parent="1" vertex="1">
+          <mxGeometry x="910" y="1776" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="🔄&#xa;EASY RETURNS&#xa;7-day policy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=center;fontColor=#190033;" parent="1" vertex="1">
+          <mxGeometry x="1190" y="1776" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1A1A1A;strokeColor=#1A1A1A;" parent="1" vertex="1">
+          <mxGeometry y="2016" width="1440" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="41" value="VGO.lk&#xa;Sri Lanka&#39;s #1 B2B&#xa;e-commerce platform&#xa;📘 📷 💬" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="40" y="2036" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="© 2025 VGO Holdings. All rights reserved." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#AAAAAA;" parent="1" vertex="1">
+          <mxGeometry x="440" y="2356" width="560" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

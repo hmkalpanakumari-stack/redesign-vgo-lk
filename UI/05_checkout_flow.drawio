@@ -1,0 +1,76 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram id="checkout-flow" name="Checkout Flow">
+    <mxGraphModel dx="4168" dy="2504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="4000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="[✓] Login  →  [●] Address  →  [ ] Shipping  →  [ ] Payment  →  [ ] Review" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=16;fontStyle=1;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry width="1440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="40" y="120" width="900" height="3200" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Step 1: Login / Guest Checkout" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="140" width="860" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Returning Customer&#xa;───────────────────────────────────&#xa;&#xa;Email Address *&#xa;[_____________________________]&#xa;&#xa;Password *&#xa;[_____________________________] [Show]&#xa;                        Forgot Password?&#xa;&#xa;☐ Keep me logged in&#xa;&#xa;[Login &amp;amp; Continue]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="200" width="860" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="────────────────── OR ──────────────────" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="360" y="520" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="New Customer / Guest Checkout&#xa;───────────────────────────────────&#xa;&#xa;Email Address *&#xa;[_____________________________]&#xa;&#xa;○ Checkout as Guest&#xa;○ Create an Account (Recommended)&#xa;&#xa;[Continue]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="570" width="860" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="Quick Checkout With:&#xa;&#xa;[🔵 Continue with Facebook]      [🔴 Continue with Google]" style="text;html=1;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="260" y="840" width="500" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Step 2: Delivery Address" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="960" width="860" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="Saved Addresses&#xa;───────────────────────────────────&#xa;&#xa;○  🏠 Home (Default)&#xa;    John Doe, +94 77 123 4567&#xa;    123 Galle Road, Colombo 03&#xa;    [Edit] [Delete]&#xa;&#xa;○  💼 Office&#xa;    John Doe, +94 77 123 4567&#xa;    456 Union Place, Colombo 02&#xa;    [Edit] [Delete]&#xa;&#xa;[+ Add New Address]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1020" width="860" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="Add New Delivery Address&#xa;───────────────────────────────────&#xa;&#xa;Full Name *                    Mobile Number *&#xa;[__________________]           [+94][_____________]&#xa;&#xa;Address Line 1 *&#xa;[_____________________________]&#xa;&#xa;City *              Province *         Postal Code *&#xa;[___________]       [__________▼]      [________]&#xa;&#xa;Address Type:  ○ Home (7am-9pm)  ○ Office (10am-6pm)&#xa;&#xa;☐ Make this my default address&#xa;☐ Save this address for future orders&#xa;&#xa;[Continue to Shipping]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1380" width="860" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Step 3: Delivery Method" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1820" width="860" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="Delivering to: 123 Galle Road, Colombo 03    [Change]&#xa;───────────────────────────────────&#xa;&#xa;○  🚚 Standard Delivery                      FREE&#xa;    Delivery by: Feb 3 - Feb 5&#xa;    3-5 business days&#xa;&#xa;○  ⚡ Express Delivery                        Rs. 500&#xa;    Delivery by: Tomorrow&#xa;    1-2 business days&#xa;&#xa;○  🏪 Store Pickup                           FREE&#xa;    Ready for pickup: Tomorrow&#xa;    VGO Colombo Showroom, Maradana&#xa;    [View Store Details]&#xa;&#xa;○  🕐 Scheduled Delivery                      Rs. 300&#xa;    Choose your preferred time slot&#xa;    [Select Date ▼]  [Select Time ▼]&#xa;&#xa;Delivery Instructions (Optional)&#xa;[_____________________________]&#xa;&#xa;[Continue to Payment]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1880" width="860" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Step 4: Payment Method" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="2440" width="860" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Payment Methods&#xa;───────────────────────────────────&#xa;&#xa;○  💳 Credit / Debit Card&#xa;    [VISA] [Mastercard] [AMEX]&#xa;    2% fee on international cards&#xa;&#xa;○  💵 Cash on Delivery&#xa;    Pay when you receive (+Rs. 50 fee)&#xa;&#xa;○  🏦 Bank Transfer&#xa;    Manual verification (1-2 days)&#xa;&#xa;○  📱 Mobile Wallets&#xa;    [iPay] [eZ Cash] [Dialog]&#xa;&#xa;B2B Payment Options:&#xa;───────────────────────────────────&#xa;&#xa;○  💼 Invoice Payment (Net 30)&#xa;    For verified business customers&#xa;    [Apply for Credit Account]&#xa;&#xa;○  🏢 Purchase Order (PO)&#xa;    Upload your company PO&#xa;    [Upload PO Document]&#xa;&#xa;🔒 Your payment information is encrypted and secure" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F9FA;strokeColor=#E0E0E0;fontSize=14;align=left;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="60" y="2500" width="860" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E0E0E0;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="980" y="120" width="420" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="Order Summary" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="140" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="[IMG] Samsung S24 Ultra × 2&#xa;[IMG] AirPods Pro × 1&#xa;&#xa;[View Details ▼]" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="190" width="380" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="───────────────────────────────&#xa;&#xa;Subtotal (3 items)      Rs. 158,000&#xa;Discount                - Rs. 39,500&#xa;Coupon (SAVE20)         - Rs. 5,000&#xa;Shipping                Rs. 0&#xa;Tax (VAT 12%)           Rs. 15,800&#xa;───────────────────────────────" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="310" width="380" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="Total                   Rs. 129,350" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#FF6B35;fontSize=20;fontStyle=1;align=center;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="510" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="💰 You saved Rs. 44,500!" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#000033;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="1000" y="590" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="🔒 Secure Checkout&#xa;SSL Encrypted&#xa;&#xa;[VISA] [MC] [AMEX] [PayPal]" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="650" width="380" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="✓&#xa;&#xa;Order Placed Successfully!&#xa;&#xa;Thank you for your order, John!&#xa;&#xa;Order Number: #VGO-2024-001234&#xa;Order Date: January 28, 2025&#xa;───────────────────────────────&#xa;&#xa;📧 Order confirmation sent to john@email.com&#xa;📱 SMS confirmation sent to +94 77 123 4567&#xa;───────────────────────────────&#xa;&#xa;Expected Delivery: Feb 3 - Feb 5&#xa;Delivery Address: 123 Galle Road, Colombo 03&#xa;───────────────────────────────&#xa;&#xa;What&#39;s Next?&#xa;1. We&#39;ll send you shipping updates&#xa;2. Track your order anytime in &quot;My Orders&quot;&#xa;3. Contact support for any questions&#xa;───────────────────────────────&#xa;&#xa;[Track Order]  [View Invoice]  [Continue Shopping]&#xa;&#xa;Need Help?&#xa;📞 Hotline: 0112 345 678  |  📧 support@vgo.lk" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F9E6;strokeColor=#28a745;fontSize=16;align=center;verticalAlign=top;fontColor=#000033;" parent="1" vertex="1">
+          <mxGeometry x="320" y="3320" width="800" height="600" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
