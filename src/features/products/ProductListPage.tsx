@@ -88,16 +88,16 @@ export function ProductListPage() {
     { label: 'Products', href: '/products' },
   ]
   if (category) {
-    breadcrumbItems.push({ label: category.name })
+    breadcrumbItems.push({ label: category.name, href: `/products/${category.slug}` })
   }
   if (searchQuery) {
-    breadcrumbItems.push({ label: `Search: "${searchQuery}"` })
+    breadcrumbItems.push({ label: `Search: "${searchQuery}"`, href: `/products?search=${searchQuery}` })
   }
   if (saleOnly) {
-    breadcrumbItems.push({ label: 'Flash Deals' })
+    breadcrumbItems.push({ label: 'Flash Deals', href: '/products?sale=true' })
   }
   if (newOnly) {
-    breadcrumbItems.push({ label: 'New Arrivals' })
+    breadcrumbItems.push({ label: 'New Arrivals', href: '/products?new=true' })
   }
 
   const handlePageChange = (page: number) => {

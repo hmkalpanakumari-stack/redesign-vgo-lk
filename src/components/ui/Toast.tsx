@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useUI } from '@/context/UIContext'
 
 interface ToastProps {
@@ -43,7 +42,7 @@ const typeStyles = {
   },
 }
 
-function Toast({ id, type, message, onClose }: ToastProps) {
+function Toast({ type, message, onClose }: ToastProps) {
   const styles = typeStyles[type]
 
   return (

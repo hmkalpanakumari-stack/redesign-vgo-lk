@@ -6,14 +6,13 @@ import { sampleAddresses, sriLankanDistricts } from '@/data/users'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
-import { Radio } from '@/components/ui/Radio'
 import { validateAddress, hasErrors } from '@/utils/validators'
 import type { Address } from '@/types/user'
 
 export function CheckoutAddressPage() {
   const navigate = useNavigate()
   const { state: authState } = useAuth()
-  const { setShippingAddress, state: checkoutState } = useCheckout()
+  const { setShippingAddress } = useCheckout()
 
   const [selectedAddressId, setSelectedAddressId] = useState<string | null>(
     authState.isAuthenticated ? sampleAddresses[0]?.id || null : null

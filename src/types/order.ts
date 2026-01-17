@@ -1,6 +1,8 @@
 import type { Product, ProductVariant } from './product'
 import type { Address } from './user'
 
+export type { Address }
+
 export interface CartItem {
   id: string
   product: Product

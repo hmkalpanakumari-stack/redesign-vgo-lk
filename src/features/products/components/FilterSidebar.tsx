@@ -6,7 +6,6 @@ import { Checkbox } from '@/components/ui/Checkbox'
 import { Button } from '@/components/ui/Button'
 import { AccordionRoot, AccordionItemRoot, AccordionTrigger, AccordionContent } from '@/components/ui/Accordion'
 import { Rating } from '@/components/ui/Rating'
-import { formatPrice } from '@/utils/formatters'
 
 interface FilterSidebarProps {
   filters: ProductFilters

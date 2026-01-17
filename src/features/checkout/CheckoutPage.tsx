@@ -1,8 +1,7 @@
-import { useState, createContext, useContext, ReactNode } from 'react'
+import { useState, createContext, useContext } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
 import { formatPrice } from '@/utils/formatters'
-import { Button } from '@/components/ui/Button'
 import type { Address, ShippingMethod, PaymentMethod, CheckoutState } from '@/types/order'
 
 interface CheckoutContextType {

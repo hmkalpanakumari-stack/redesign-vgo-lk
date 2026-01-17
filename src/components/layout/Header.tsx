@@ -5,7 +5,6 @@ import { useAuth } from '@/context/AuthContext'
 import { useUI } from '@/context/UIContext'
 import { categories } from '@/data/categories'
 import { announcementBar } from '@/data/content'
-import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 
 export function Header() {

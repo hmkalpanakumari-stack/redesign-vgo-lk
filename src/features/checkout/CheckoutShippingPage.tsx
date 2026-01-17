@@ -4,7 +4,6 @@ import { useCheckout } from './CheckoutPage'
 import { shippingMethods } from '@/data/orders'
 import { formatPrice } from '@/utils/formatters'
 import { Button } from '@/components/ui/Button'
-import type { ShippingMethod } from '@/types/order'
 
 export function CheckoutShippingPage() {
   const navigate = useNavigate()

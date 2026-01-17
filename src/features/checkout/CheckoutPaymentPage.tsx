@@ -6,7 +6,6 @@ import { paymentMethods } from '@/data/orders'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Checkbox } from '@/components/ui/Checkbox'
-import type { PaymentMethod } from '@/types/order'
 
 export function CheckoutPaymentPage() {
   const navigate = useNavigate()

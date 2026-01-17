@@ -33,7 +33,7 @@ export function HeroBanner() {
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
-        {heroBanners.map((banner, index) => (
+        {heroBanners.map((banner) => (
           <div
             key={banner.id}
             className="w-full flex-shrink-0 relative"

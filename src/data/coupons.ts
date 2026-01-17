@@ -66,6 +66,7 @@ export const coupons: Coupon[] = [
     minOrderAmount: 2000,
     validFrom: '2024-01-01T00:00:00Z',
     validUntil: '2024-12-31T23:59:59Z',
+    usageCount: 0,
     isActive: true,
     description: 'Free standard shipping on orders above Rs. 2,000',
   },
