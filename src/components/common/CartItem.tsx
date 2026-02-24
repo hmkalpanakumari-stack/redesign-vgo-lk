@@ -3,6 +3,7 @@ import type { CartItem as CartItemType } from '@/types/order'
 import { formatPrice } from '@/utils/formatters'
 import { QuantitySelector } from './QuantitySelector'
 import { useCart } from '@/context/CartContext'
+import { getImageUrl } from '@/services/apiClient'
 
 interface CartItemProps {
   item: CartItemType
@@ -32,7 +33,7 @@ export function CartItem({
       <div className={`flex gap-3 ${className}`}>
         <Link to={`/product/${item.product.slug}`} className="flex-shrink-0">
           <img
-            src={primaryImage?.url}
+            src={getImageUrl(primaryImage?.url)}
             alt={item.product.name}
             className="w-16 h-16 object-cover rounded-lg"
           />
@@ -63,7 +64,7 @@ export function CartItem({
       {/* Product Image */}
       <Link to={`/product/${item.product.slug}`} className="flex-shrink-0">
         <img
-          src={primaryImage?.url}
+          src={getImageUrl(primaryImage?.url)}
           alt={item.product.name}
           className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-lg"
         />

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VgoApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd2b0760b4c9f5826d35296c738cd96af328590e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05134069ce474629f462643c22730bb14935cb2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("VgoApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VgoApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

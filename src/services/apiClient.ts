@@ -1,5 +1,15 @@
 // API Configuration
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5134/api/v1';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5200/api/v1';
+
+// Static files base URL (remove /api/v1 from API URL)
+export const STATIC_BASE_URL = API_BASE_URL.replace('/api/v1', '');
+
+// Helper to get full image URL
+export function getImageUrl(path: string | undefined | null): string {
+    if (!path) return '/placeholder-image.jpg';
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    return `${STATIC_BASE_URL}${path}`;
+}
 
 // API Client with error handling
 class ApiClient {

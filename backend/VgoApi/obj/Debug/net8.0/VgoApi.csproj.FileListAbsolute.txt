@@ -116,3 +116,4 @@ C:\Users\Miyuranga\Desktop\redesign-vgo-lk\backend\VgoApi\obj\Debug\net8.0\refin
 C:\Users\Miyuranga\Desktop\redesign-vgo-lk\backend\VgoApi\obj\Debug\net8.0\VgoApi.pdb
 C:\Users\Miyuranga\Desktop\redesign-vgo-lk\backend\VgoApi\obj\Debug\net8.0\VgoApi.genruntimeconfig.cache
 C:\Users\Miyuranga\Desktop\redesign-vgo-lk\backend\VgoApi\obj\Debug\net8.0\ref\VgoApi.dll
+C:\Users\Miyuranga\Desktop\redesign-vgo-lk\backend\VgoApi\bin\Debug\net8.0\VgoApi.staticwebassets.runtime.json

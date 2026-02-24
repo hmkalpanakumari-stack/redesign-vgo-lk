@@ -21,7 +21,7 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 });
 
 // Configure Database
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? "Host=localhost;Database=vgo_db;Username=postgres;Password=Icbt1234";
 
 builder.Services.AddDbContext<VgoDbContext>(options =>
@@ -80,6 +80,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");
+app.UseStaticFiles(); // Serve static files from wwwroot
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -101,12 +102,12 @@ if (app.Environment.IsDevelopment())
 {
     using var scope = app.Services.CreateScope();
     var context = scope.ServiceProvider.GetRequiredService<VgoDbContext>();
-    
+
     try
     {
         // Ensure database is created
         await context.Database.EnsureCreatedAsync();
-        
+
         // Seed data
         await DbSeeder.SeedDatabase(context);
     }

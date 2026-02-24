@@ -15,8 +15,8 @@ export const products: Product[] = [
       discountPercentage: 8,
     },
     images: [
-      { id: 'img-1-1', url: 'https://picsum.photos/seed/iphone15-1/600/600', altText: 'iPhone 15 Pro Max front', isPrimary: true },
-      { id: 'img-1-2', url: 'https://picsum.photos/seed/iphone15-2/600/600', altText: 'iPhone 15 Pro Max back' },
+      { id: 'img-1-1', url: '/products/iphone-15-pro-max.jpg', altText: 'iPhone 15 Pro Max front', isPrimary: true },
+      { id: 'img-1-2', url: '/products/Samsung-Galaxy-S25-Ultra.webp', altText: 'iPhone 15 Pro Max back' },
       { id: 'img-1-3', url: 'https://picsum.photos/seed/iphone15-3/600/600', altText: 'iPhone 15 Pro Max side' },
       { id: 'img-1-4', url: 'https://picsum.photos/seed/iphone15-4/600/600', altText: 'iPhone 15 Pro Max camera' },
     ],
@@ -67,7 +67,7 @@ export const products: Product[] = [
       { minQuantity: 20, pricePerUnit: 429900 },
     ],
     images: [
-      { id: 'img-2-1', url: 'https://picsum.photos/seed/s24ultra-1/600/600', altText: 'Samsung Galaxy S24 Ultra front', isPrimary: true },
+      { id: 'img-2-1', url: '/products/Samsung-Galaxy-S25-Ultra.webp', altText: 'Samsung Galaxy S24 Ultra front', isPrimary: true },
       { id: 'img-2-2', url: 'https://picsum.photos/seed/s24ultra-2/600/600', altText: 'Samsung Galaxy S24 Ultra back' },
       { id: 'img-2-3', url: 'https://picsum.photos/seed/s24ultra-3/600/600', altText: 'Samsung Galaxy S24 Ultra S Pen' },
     ],
@@ -108,7 +108,7 @@ export const products: Product[] = [
       currency: 'Rs.',
     },
     images: [
-      { id: 'img-3-1', url: 'https://picsum.photos/seed/macbook-1/600/600', altText: 'MacBook Pro front', isPrimary: true },
+      { id: 'img-3-1', url: '/products/Apple-MacBook-Pro-14-M3-Pro-2023.jpg', altText: 'MacBook Pro front', isPrimary: true },
       { id: 'img-3-2', url: 'https://picsum.photos/seed/macbook-2/600/600', altText: 'MacBook Pro side' },
       { id: 'img-3-3', url: 'https://picsum.photos/seed/macbook-3/600/600', altText: 'MacBook Pro keyboard' },
     ],
@@ -150,7 +150,7 @@ export const products: Product[] = [
       discountPercentage: 10,
     },
     images: [
-      { id: 'img-4-1', url: 'https://picsum.photos/seed/sonyxm5-1/600/600', altText: 'Sony WH-1000XM5 front', isPrimary: true },
+      { id: 'img-4-1', url: '/products/gq-mobiles-sony-wh-1000.png', altText: 'Sony WH-1000XM5 front', isPrimary: true },
       { id: 'img-4-2', url: 'https://picsum.photos/seed/sonyxm5-2/600/600', altText: 'Sony WH-1000XM5 folded' },
     ],
     category: categories[0],

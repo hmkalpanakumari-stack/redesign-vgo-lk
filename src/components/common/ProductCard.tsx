@@ -6,6 +6,7 @@ import { Badge, DiscountBadge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { useCart } from '@/context/CartContext'
 import { useUI } from '@/context/UIContext'
+import { getImageUrl } from '@/services/apiClient'
 
 interface ProductCardProps {
   product: Product
@@ -42,7 +43,7 @@ export function ProductCard({
         {/* Image */}
         <div className="relative w-32 h-32 flex-shrink-0">
           <img
-            src={primaryImage?.url}
+            src={getImageUrl(primaryImage?.url)}
             alt={primaryImage?.altText || product.name}
             className="w-full h-full object-cover rounded-lg"
           />
@@ -81,7 +82,7 @@ export function ProductCard({
       >
         <div className="relative aspect-product">
           <img
-            src={primaryImage?.url}
+            src={getImageUrl(primaryImage?.url)}
             alt={primaryImage?.altText || product.name}
             className="w-full h-full object-cover"
           />
@@ -109,7 +110,7 @@ export function ProductCard({
         {/* Image Container */}
         <div className="relative aspect-product overflow-hidden">
           <img
-            src={primaryImage?.url}
+            src={getImageUrl(primaryImage?.url)}
             alt={primaryImage?.altText || product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />

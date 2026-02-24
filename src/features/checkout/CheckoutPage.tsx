@@ -2,6 +2,7 @@ import { useState, createContext, useContext } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
 import { formatPrice } from '@/utils/formatters'
+import { getImageUrl } from '@/services/apiClient'
 import type { Address, ShippingMethod, PaymentMethod, CheckoutState } from '@/types/order'
 
 interface CheckoutContextType {
@@ -145,7 +146,7 @@ export function CheckoutPage() {
                   {cartState.items.map(item => (
                     <div key={item.id} className="flex gap-3">
                       <img
-                        src={item.product.images[0]?.url}
+                        src={getImageUrl(item.product.images[0]?.url)}
                         alt={item.product.name}
                         className="w-14 h-14 object-cover rounded"
                       />

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { Category } from '@/types/product'
+import { getImageUrl } from '@/services/apiClient'
 
 interface CategoryCardProps {
   category: Category
@@ -41,7 +42,7 @@ export function CategoryCard({
         {/* Background Image */}
         <div className="aspect-[4/3] overflow-hidden">
           <img
-            src={category.imageUrl}
+            src={getImageUrl(category.imageUrl)}
             alt={category.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -78,7 +79,7 @@ export function CategoryCard({
       {category.imageUrl && (
         <div className="aspect-square overflow-hidden">
           <img
-            src={category.imageUrl}
+            src={getImageUrl(category.imageUrl)}
             alt={category.name}
             className="w-full h-full object-cover"
           />
