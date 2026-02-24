@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
 import { useCheckout } from './CheckoutPage'
 import { Button } from '@/components/ui/Button'
@@ -9,7 +9,7 @@ import { isValidEmail } from '@/utils/validators'
 
 export function CheckoutLoginPage() {
   const navigate = useNavigate()
-  const { state: authState, login } = useAuth()
+  const { state: authState, login, register } = useAuth()
   const { setGuestEmail } = useCheckout()
 
   const [mode, setMode] = useState<'login' | 'guest' | 'register'>('login')
@@ -25,10 +25,19 @@ export function CheckoutLoginPage() {
   const [guestEmail, setGuestEmailInput] = useState('')
   const [guestError, setGuestError] = useState('')
 
+  // Register form
+  const [regFirstName, setRegFirstName] = useState('')
+  const [regLastName, setRegLastName] = useState('')
+  const [regEmail, setRegEmail] = useState('')
+  const [regPhone, setRegPhone] = useState('')
+  const [regPassword, setRegPassword] = useState('')
+  const [regConfirmPassword, setRegConfirmPassword] = useState('')
+  const [regAcceptTerms, setRegAcceptTerms] = useState(false)
+  const [registerError, setRegisterError] = useState('')
+
   // If already logged in, proceed to next step
   if (authState.isAuthenticated) {
-    navigate('/checkout/address')
-    return null
+    return <Navigate to="/checkout/address" replace />
   }
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -67,6 +76,53 @@ export function CheckoutLoginPage() {
 
     setGuestEmail(guestEmail)
     navigate('/checkout/address')
+  }
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setRegisterError('')
+
+    if (!regFirstName || !regLastName || !regEmail || !regPhone || !regPassword || !regConfirmPassword) {
+      setRegisterError('Please fill in all fields')
+      return
+    }
+
+    if (!isValidEmail(regEmail)) {
+      setRegisterError('Please enter a valid email address')
+      return
+    }
+
+    if (regPassword !== regConfirmPassword) {
+      setRegisterError('Passwords do not match')
+      return
+    }
+
+    if (regPassword.length < 6) {
+      setRegisterError('Password must be at least 6 characters')
+      return
+    }
+
+    if (!regAcceptTerms) {
+      setRegisterError('Please accept the Terms of Service')
+      return
+    }
+
+    setIsLoading(true)
+    const success = await register({
+      firstName: regFirstName,
+      lastName: regLastName,
+      email: regEmail,
+      phone: regPhone,
+      password: regPassword,
+      confirmPassword: regConfirmPassword,
+    })
+    setIsLoading(false)
+
+    if (success) {
+      navigate('/checkout/address')
+    } else {
+      setRegisterError(authState.error || 'Registration failed. Please try again.')
+    }
   }
 
   return (
@@ -174,20 +230,34 @@ export function CheckoutLoginPage() {
 
       {/* Register Form */}
       {mode === 'register' && (
-        <form className="space-y-4">
+        <form onSubmit={handleRegister} className="space-y-4">
           <p className="text-dark-muted mb-4">
             Create an account to track orders, save addresses, and checkout faster.
           </p>
 
           <div className="grid grid-cols-2 gap-4">
-            <Input label="First Name" placeholder="John" required />
-            <Input label="Last Name" placeholder="Doe" required />
+            <Input
+              label="First Name"
+              placeholder="John"
+              value={regFirstName}
+              onChange={(e) => setRegFirstName(e.target.value)}
+              required
+            />
+            <Input
+              label="Last Name"
+              placeholder="Doe"
+              value={regLastName}
+              onChange={(e) => setRegLastName(e.target.value)}
+              required
+            />
           </div>
 
           <Input
             label="Email Address"
             type="email"
             placeholder="your@email.com"
+            value={regEmail}
+            onChange={(e) => setRegEmail(e.target.value)}
             required
           />
 
@@ -195,6 +265,8 @@ export function CheckoutLoginPage() {
             label="Phone Number"
             type="tel"
             placeholder="+94 7X XXX XXXX"
+            value={regPhone}
+            onChange={(e) => setRegPhone(e.target.value)}
             required
           />
 
@@ -202,6 +274,8 @@ export function CheckoutLoginPage() {
             label="Password"
             type="password"
             placeholder="Create a password"
+            value={regPassword}
+            onChange={(e) => setRegPassword(e.target.value)}
             required
           />
 
@@ -209,15 +283,22 @@ export function CheckoutLoginPage() {
             label="Confirm Password"
             type="password"
             placeholder="Confirm your password"
+            value={regConfirmPassword}
+            onChange={(e) => setRegConfirmPassword(e.target.value)}
             required
           />
+
+          {registerError && (
+            <p className="text-sm text-error">{registerError}</p>
+          )}
 
           <Checkbox
             label="I agree to the Terms of Service and Privacy Policy"
-            required
+            checked={regAcceptTerms}
+            onChange={(e) => setRegAcceptTerms(e.target.checked)}
           />
 
-          <Button type="submit" fullWidth size="lg">
+          <Button type="submit" fullWidth size="lg" isLoading={isLoading}>
             Register & Continue
           </Button>
         </form>

@@ -158,5 +158,94 @@ public static class AuthEndpoints
         .RequireAuthorization()
         .WithName("Logout")
         .WithOpenApi();
+
+        // Get current user's addresses
+        group.MapGet("/me/addresses", async (
+            HttpContext context,
+            VgoDbContext db) =>
+        {
+            var userIdClaim = context.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
+            {
+                return Results.Unauthorized();
+            }
+
+            var addresses = await db.Addresses
+                .Where(a => a.UserId == userId)
+                .OrderByDescending(a => a.IsDefault)
+                .ThenBy(a => a.CreatedAt)
+                .ToListAsync();
+
+            var addressDtos = addresses.Select(a => new AddressDto(
+                a.Id, a.Label, a.FirstName, a.LastName,
+                a.Phone, a.AddressLine1, a.AddressLine2,
+                a.City, a.District, a.PostalCode, a.Country,
+                a.IsDefault, a.Type
+            )).ToList();
+
+            return Results.Ok(new ApiResponse<List<AddressDto>>(true, addressDtos));
+        })
+        .RequireAuthorization()
+        .WithName("GetUserAddresses")
+        .WithOpenApi();
+
+        // Create address for current user
+        group.MapPost("/me/addresses", async (
+            [FromBody] CreateAddressRequest request,
+            HttpContext context,
+            VgoDbContext db) =>
+        {
+            var userIdClaim = context.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
+            {
+                return Results.Unauthorized();
+            }
+
+            // If this is set as default, unset existing defaults
+            if (request.IsDefault)
+            {
+                var existingDefaults = await db.Addresses
+                    .Where(a => a.UserId == userId && a.IsDefault)
+                    .ToListAsync();
+                foreach (var addr in existingDefaults)
+                    addr.IsDefault = false;
+            }
+
+            var address = new Address
+            {
+                Id = Guid.NewGuid(),
+                UserId = userId,
+                Label = request.Label,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Phone = request.Phone,
+                AddressLine1 = request.AddressLine1,
+                AddressLine2 = request.AddressLine2,
+                City = request.City,
+                District = request.District,
+                PostalCode = request.PostalCode,
+                Country = request.Country,
+                IsDefault = request.IsDefault,
+                Type = request.Type,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+
+            db.Addresses.Add(address);
+            await db.SaveChangesAsync();
+
+            var addressDto = new AddressDto(
+                address.Id, address.Label, address.FirstName, address.LastName,
+                address.Phone, address.AddressLine1, address.AddressLine2,
+                address.City, address.District, address.PostalCode, address.Country,
+                address.IsDefault, address.Type
+            );
+
+            return Results.Created($"/api/v1/auth/me/addresses/{address.Id}",
+                new ApiResponse<AddressDto>(true, addressDto));
+        })
+        .RequireAuthorization()
+        .WithName("CreateUserAddress")
+        .WithOpenApi();
     }
 }

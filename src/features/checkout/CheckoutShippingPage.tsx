@@ -1,17 +1,34 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCheckout } from './CheckoutPage'
-import { shippingMethods } from '@/data/orders'
+import { orderService } from '@/services/orderService'
 import { formatPrice } from '@/utils/formatters'
 import { Button } from '@/components/ui/Button'
+import type { ShippingMethod } from '@/types/order'
 
 export function CheckoutShippingPage() {
   const navigate = useNavigate()
   const { setShippingMethod, state: checkoutState } = useCheckout()
 
+  const [shippingMethods, setShippingMethods] = useState<ShippingMethod[]>([])
+  const [loadingMethods, setLoadingMethods] = useState(true)
   const [selectedMethodId, setSelectedMethodId] = useState<string>(
-    checkoutState.shippingMethod?.id || shippingMethods[0].id
+    checkoutState.shippingMethod?.id || ''
   )
+
+  useEffect(() => {
+    orderService.getShippingMethods()
+      .then((methods) => {
+        setShippingMethods(methods)
+        if (!selectedMethodId && methods.length > 0) {
+          setSelectedMethodId(methods[0].id)
+        }
+      })
+      .catch(() => {
+        // Backend unreachable - leave empty
+      })
+      .finally(() => setLoadingMethods(false))
+  }, [])
 
   const handleContinue = () => {
     const method = shippingMethods.find(m => m.id === selectedMethodId)
@@ -53,50 +70,63 @@ export function CheckoutShippingPage() {
       )}
 
       {/* Shipping Methods */}
-      <div className="space-y-3">
-        {shippingMethods.map(method => (
-          <label
-            key={method.id}
-            className={`
-              flex items-start gap-4 p-4 border rounded-lg cursor-pointer transition-colors
-              ${selectedMethodId === method.id
-                ? 'border-primary-orange bg-primary-orange/5'
-                : 'border-light-border hover:border-dark-muted'
-              }
-            `}
-          >
-            <input
-              type="radio"
-              name="shippingMethod"
-              checked={selectedMethodId === method.id}
-              onChange={() => setSelectedMethodId(method.id)}
-              className="mt-1"
-            />
-            <div className="flex-1">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">{method.icon}</span>
-                  <span className="font-medium text-dark">{method.name}</span>
+      {loadingMethods ? (
+        <p className="text-dark-muted text-sm">Loading shipping options...</p>
+      ) : shippingMethods.length === 0 ? (
+        <p className="text-error text-sm">Unable to load shipping methods. Please try again.</p>
+      ) : (
+        <div className="space-y-3">
+          {shippingMethods.map(method => (
+            <label
+              key={method.id}
+              className={`
+                flex items-start gap-4 p-4 border rounded-lg cursor-pointer transition-colors
+                ${selectedMethodId === method.id
+                  ? 'border-primary-orange bg-primary-orange/5'
+                  : 'border-light-border hover:border-dark-muted'
+                }
+              `}
+            >
+              <input
+                type="radio"
+                name="shippingMethod"
+                checked={selectedMethodId === method.id}
+                onChange={() => setSelectedMethodId(method.id)}
+                className="mt-1"
+              />
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    {method.icon && <span className="text-xl">{method.icon}</span>}
+                    <span className="font-medium text-dark">{method.name}</span>
+                  </div>
+                  <span className="font-semibold text-primary-orange">
+                    {method.price === 0 ? 'Free' : formatPrice(method.price)}
+                  </span>
                 </div>
-                <span className="font-semibold text-primary-orange">
-                  {method.price === 0 ? 'Free' : formatPrice(method.price)}
-                </span>
+                {method.description && (
+                  <p className="text-sm text-dark-muted mt-1">{method.description}</p>
+                )}
+                <p className="text-sm text-success mt-1">
+                  Estimated delivery: {method.estimatedDays}
+                </p>
               </div>
-              <p className="text-sm text-dark-muted mt-1">{method.description}</p>
-              <p className="text-sm text-success mt-1">
-                Estimated delivery: {method.estimatedDays}
-              </p>
-            </div>
-          </label>
-        ))}
-      </div>
+            </label>
+          ))}
+        </div>
+      )}
 
       {/* Continue Button */}
       <div className="mt-6 flex gap-4">
         <Button variant="ghost" onClick={() => navigate('/checkout/address')}>
           Back
         </Button>
-        <Button variant="primary" onClick={handleContinue} className="flex-1">
+        <Button
+          variant="primary"
+          onClick={handleContinue}
+          className="flex-1"
+          disabled={!selectedMethodId || loadingMethods}
+        >
           Continue to Payment
         </Button>
       </div>

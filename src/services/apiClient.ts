@@ -1,5 +1,5 @@
 // API Configuration
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5200/api/v1';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5134/api/v1';
 
 // Static files base URL (remove /api/v1 from API URL)
 export const STATIC_BASE_URL = API_BASE_URL.replace('/api/v1', '');
@@ -59,7 +59,7 @@ class ApiClient {
                 if (response.status === 401) {
                     // Unauthorized - clear token
                     this.setToken(null);
-                    window.location.href = '/login';
+                    window.location.href = '/checkout';
                 }
 
                 const error = await response.json().catch(() => ({
