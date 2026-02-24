@@ -6,7 +6,7 @@ export const categories: Category[] = [
     name: 'Electronics',
     slug: 'electronics',
     description: 'Latest gadgets and electronics',
-    image: 'https://picsum.photos/seed/electronics/400/300',
+    imageUrl: 'https://picsum.photos/seed/electronics/400/300',
     icon: '📱',
     productCount: 245,
     children: [
@@ -21,7 +21,7 @@ export const categories: Category[] = [
     name: 'Fashion',
     slug: 'fashion',
     description: 'Trendy clothing and accessories',
-    image: 'https://picsum.photos/seed/fashion/400/300',
+    imageUrl: 'https://picsum.photos/seed/fashion/400/300',
     icon: '👕',
     productCount: 312,
     children: [
@@ -36,7 +36,7 @@ export const categories: Category[] = [
     name: 'Home & Living',
     slug: 'home-living',
     description: 'Furniture and home decor',
-    image: 'https://picsum.photos/seed/home/400/300',
+    imageUrl: 'https://picsum.photos/seed/home/400/300',
     icon: '🏠',
     productCount: 189,
     children: [
@@ -51,7 +51,7 @@ export const categories: Category[] = [
     name: 'Sports & Fitness',
     slug: 'sports-fitness',
     description: 'Sports equipment and fitness gear',
-    image: 'https://picsum.photos/seed/sports/400/300',
+    imageUrl: 'https://picsum.photos/seed/sports/400/300',
     icon: '⚽',
     productCount: 156,
     children: [
@@ -66,7 +66,7 @@ export const categories: Category[] = [
     name: 'Beauty & Health',
     slug: 'beauty-health',
     description: 'Cosmetics and wellness products',
-    image: 'https://picsum.photos/seed/beauty/400/300',
+    imageUrl: 'https://picsum.photos/seed/beauty/400/300',
     icon: '💄',
     productCount: 203,
     children: [
@@ -81,7 +81,7 @@ export const categories: Category[] = [
     name: 'Groceries',
     slug: 'groceries',
     description: 'Daily essentials and food items',
-    image: 'https://picsum.photos/seed/groceries/400/300',
+    imageUrl: 'https://picsum.photos/seed/groceries/400/300',
     icon: '🛒',
     productCount: 287,
     children: [

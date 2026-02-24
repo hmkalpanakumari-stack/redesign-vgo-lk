@@ -1,7 +1,6 @@
-import { useState, useMemo } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
-import { products, getProductsByCategory, searchProducts } from '@/data/products'
-import { getCategoryBySlug } from '@/data/categories'
+import { productService, categoryService } from '@/services'
 import { useFilters } from '@/hooks/useFilters'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { Select } from '@/components/ui/Select'
@@ -9,7 +8,7 @@ import { Pagination } from '@/components/ui/Pagination'
 import { ProductCard } from '@/components/common/ProductCard'
 import { FilterSidebar } from './components/FilterSidebar'
 import { ActiveFilters } from './components/ActiveFilters'
-import type { SortOption } from '@/types/product'
+import type { Product, Category, SortOption } from '@/types/product'
 
 const PRODUCTS_PER_PAGE = 12
 
@@ -33,6 +32,14 @@ export function ProductListPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [showMobileFilters, setShowMobileFilters] = useState(false)
 
+  // API state
+  const [products, setProducts] = useState<Product[]>([])
+  const [totalProducts, setTotalProducts] = useState(0)
+  const [totalPages, setTotalPages] = useState(1)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [category, setCategory] = useState<Category | null>(null)
+
   const {
     filters,
     sort,
@@ -46,42 +53,50 @@ export function ProductListPage() {
     setOnSale,
     clearFilters,
     clearFilter,
-    applyFilters,
     activeFilterCount,
   } = useFilters()
 
-  // Get base products
-  const baseProducts = useMemo(() => {
-    if (searchQuery) {
-      return searchProducts(searchQuery)
-    }
+  // Fetch category info
+  useEffect(() => {
     if (categorySlug) {
-      return getProductsByCategory(categorySlug)
+      categoryService.getCategoryBySlug(categorySlug)
+        .then(setCategory)
+        .catch(() => setCategory(null))
+    } else {
+      setCategory(null)
     }
-    let result = products
-    if (saleOnly) {
-      result = result.filter(p => p.isOnSale)
+  }, [categorySlug])
+
+  // Fetch products from API
+  const fetchProducts = useCallback(async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const response = await productService.getProducts({
+        page: currentPage,
+        limit: PRODUCTS_PER_PAGE,
+        sort: sort === 'relevance' ? 'newest' : sort as 'newest' | 'price-low-high' | 'price-high-low' | 'rating' | 'best-selling',
+        category: categorySlug,
+        search: searchQuery || undefined,
+        onSale: saleOnly || filters.onSale || undefined,
+        inStock: filters.inStock || undefined,
+        minPrice: filters.priceRange && filters.priceRange.min > 0 ? filters.priceRange.min : undefined,
+        maxPrice: filters.priceRange && filters.priceRange.max < 100000 ? filters.priceRange.max : undefined,
+        brand: filters.brands && filters.brands.length > 0 ? filters.brands[0] : undefined,
+      })
+      setProducts(response.data)
+      setTotalProducts(response.total)
+      setTotalPages(response.totalPages)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load products')
+    } finally {
+      setLoading(false)
     }
-    if (newOnly) {
-      result = result.filter(p => p.isNew)
-    }
-    return result
-  }, [categorySlug, searchQuery, saleOnly, newOnly])
+  }, [currentPage, sort, categorySlug, searchQuery, saleOnly, filters])
 
-  // Apply filters and sorting
-  const filteredProducts = useMemo(() => {
-    return applyFilters(baseProducts)
-  }, [baseProducts, applyFilters])
-
-  // Pagination
-  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * PRODUCTS_PER_PAGE,
-    currentPage * PRODUCTS_PER_PAGE
-  )
-
-  // Get category info for breadcrumb
-  const category = categorySlug ? getCategoryBySlug(categorySlug) : null
+  useEffect(() => {
+    fetchProducts()
+  }, [fetchProducts])
 
   // Build breadcrumb items
   const breadcrumbItems = [
@@ -137,7 +152,7 @@ export function ProductListPage() {
                     {category?.name || searchQuery ? `Search: "${searchQuery}"` : saleOnly ? 'Flash Deals' : newOnly ? 'New Arrivals' : 'All Products'}
                   </h1>
                   <p className="text-sm text-dark-muted mt-1">
-                    {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
+                    {totalProducts} product{totalProducts !== 1 ? 's' : ''} found
                   </p>
                 </div>
 
@@ -202,7 +217,27 @@ export function ProductListPage() {
             </div>
 
             {/* Products Grid/List */}
-            {paginatedProducts.length > 0 ? (
+            {loading ? (
+              <div className={
+                viewMode === 'grid'
+                  ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4'
+                  : 'space-y-4'
+              }>
+                {[...Array(PRODUCTS_PER_PAGE)].map((_, i) => (
+                  <div key={i} className="bg-gray-200 animate-pulse rounded-xl h-72" />
+                ))}
+              </div>
+            ) : error ? (
+              <div className="bg-white rounded-xl p-12 text-center shadow-card">
+                <p className="text-red-500 mb-4">{error}</p>
+                <button
+                  onClick={fetchProducts}
+                  className="text-primary-orange hover:underline"
+                >
+                  Try again
+                </button>
+              </div>
+            ) : products.length > 0 ? (
               <>
                 <div
                   className={
@@ -211,7 +246,7 @@ export function ProductListPage() {
                       : 'space-y-4'
                   }
                 >
-                  {paginatedProducts.map(product => (
+                  {products.map(product => (
                     <ProductCard
                       key={product.id}
                       product={product}

@@ -1,14 +1,23 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
-import { getUserOrders } from '@/data/orders'
+import { orderService } from '@/services'
 import { formatPrice } from '@/utils/formatters'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import type { Order } from '@/types/order'
 
 export function DashboardPage() {
   const { state } = useAuth()
-  const recentOrders = state.user ? getUserOrders(state.user.id).slice(0, 3) : []
+  const [recentOrders, setRecentOrders] = useState<Order[]>([])
+
+  useEffect(() => {
+    if (!state.isAuthenticated) return
+    orderService.getOrders(1, 3)
+      .then(res => setRecentOrders(res.data))
+      .catch(() => setRecentOrders([]))
+  }, [state.isAuthenticated])
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -102,7 +111,7 @@ export function DashboardPage() {
                     {order.items.slice(0, 3).map((item) => (
                       <img
                         key={item.id}
-                        src={item.productImage}
+                        src={item.productImageUrl}
                         alt={item.productName}
                         className="w-16 h-16 object-cover rounded"
                       />

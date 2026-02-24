@@ -43,7 +43,7 @@ export function ProductCard({
         <div className="relative w-32 h-32 flex-shrink-0">
           <img
             src={primaryImage?.url}
-            alt={primaryImage?.alt || product.name}
+            alt={primaryImage?.altText || product.name}
             className="w-full h-full object-cover rounded-lg"
           />
           {hasDiscount && (
@@ -82,7 +82,7 @@ export function ProductCard({
         <div className="relative aspect-product">
           <img
             src={primaryImage?.url}
-            alt={primaryImage?.alt || product.name}
+            alt={primaryImage?.altText || product.name}
             className="w-full h-full object-cover"
           />
           {hasDiscount && (
@@ -110,7 +110,7 @@ export function ProductCard({
         <div className="relative aspect-product overflow-hidden">
           <img
             src={primaryImage?.url}
-            alt={primaryImage?.alt || product.name}
+            alt={primaryImage?.altText || product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
 

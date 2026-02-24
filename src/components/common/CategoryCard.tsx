@@ -41,7 +41,7 @@ export function CategoryCard({
         {/* Background Image */}
         <div className="aspect-[4/3] overflow-hidden">
           <img
-            src={category.image}
+            src={category.imageUrl}
             alt={category.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -75,10 +75,10 @@ export function CategoryCard({
       `}
     >
       {/* Image */}
-      {category.image && (
+      {category.imageUrl && (
         <div className="aspect-square overflow-hidden">
           <img
-            src={category.image}
+            src={category.imageUrl}
             alt={category.name}
             className="w-full h-full object-cover"
           />
@@ -87,7 +87,7 @@ export function CategoryCard({
 
       {/* Content */}
       <div className="p-4 text-center">
-        {category.icon && !category.image && (
+        {category.icon && !category.imageUrl && (
           <span className="text-4xl block mb-2">{category.icon}</span>
         )}
         <h3 className="font-semibold text-dark">{category.name}</h3>

@@ -1,7 +1,50 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { categories } from '@/data/categories'
+import { categoryService } from '@/services'
+import type { Category } from '@/types/product'
 
 export function CategorySection() {
+  const [categories, setCategories] = useState<Category[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await categoryService.getCategories()
+        setCategories(data)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load categories')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchCategories()
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="py-12 bg-light-bg">
+        <div className="container">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-gray-200 animate-pulse rounded-xl h-32" />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (error) {
+    return (
+      <section className="py-12 bg-light-bg">
+        <div className="container text-center text-red-500">{error}</div>
+      </section>
+    )
+  }
+
   return (
     <section className="py-12 bg-light-bg">
       <div className="container">

@@ -68,9 +68,9 @@ export function ProfilePage() {
           <div className="lg:col-span-1">
             <Card className="p-6 text-center">
               <div className="w-32 h-32 mx-auto mb-4 bg-primary-orange/10 rounded-full flex items-center justify-center">
-                {state.user?.avatar ? (
+                {state.user?.avatarUrl ? (
                   <img
-                    src={state.user.avatar}
+                    src={state.user.avatarUrl}
                     alt="Profile"
                     className="w-full h-full rounded-full object-cover"
                   />

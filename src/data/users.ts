@@ -6,7 +6,7 @@ export const sampleUser: User = {
   firstName: 'John',
   lastName: 'Perera',
   phone: '+94 77 123 4567',
-  avatar: 'https://picsum.photos/seed/avatar1/150/150',
+  avatarUrl: 'https://picsum.photos/seed/avatar1/150/150',
   dateOfBirth: '1990-05-15',
   gender: 'male',
   isVerified: true,
@@ -17,7 +17,6 @@ export const sampleUser: User = {
 export const sampleAddresses: Address[] = [
   {
     id: 'addr-1',
-    userId: 'user-1',
     label: 'Home',
     firstName: 'John',
     lastName: 'Perera',
@@ -33,7 +32,6 @@ export const sampleAddresses: Address[] = [
   },
   {
     id: 'addr-2',
-    userId: 'user-1',
     label: 'Office',
     firstName: 'John',
     lastName: 'Perera',

@@ -26,10 +26,9 @@ export function ImageGallery({ images, productName }: ImageGalleryProps) {
       <div className="relative aspect-square bg-light-bg rounded-xl overflow-hidden group">
         <img
           src={selectedImage?.url}
-          alt={selectedImage?.alt || productName}
-          className={`w-full h-full object-contain transition-transform duration-300 ${
-            isZoomed ? 'scale-150 cursor-zoom-out' : 'cursor-zoom-in'
-          }`}
+          alt={selectedImage?.altText || productName}
+          className={`w-full h-full object-contain transition-transform duration-300 ${isZoomed ? 'scale-150 cursor-zoom-out' : 'cursor-zoom-in'
+            }`}
           onClick={() => setIsZoomed(!isZoomed)}
         />
 
@@ -91,7 +90,7 @@ export function ImageGallery({ images, productName }: ImageGalleryProps) {
             >
               <img
                 src={image.url}
-                alt={image.alt || `${productName} thumbnail ${index + 1}`}
+                alt={image.altText || `${productName} thumbnail ${index + 1}`}
                 className="w-full h-full object-cover"
               />
             </button>

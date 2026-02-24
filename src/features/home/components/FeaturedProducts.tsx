@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getFeaturedProducts, getBestSellers, getNewProducts } from '@/data/products'
+import { productService } from '@/services'
 import { ProductCard } from '@/components/common/ProductCard'
+import type { Product } from '@/types/product'
 
 type TabType = 'featured' | 'bestsellers' | 'new'
 
@@ -13,19 +14,38 @@ const tabs = [
 
 export function FeaturedProducts() {
   const [activeTab, setActiveTab] = useState<TabType>('featured')
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const getProducts = () => {
-    switch (activeTab) {
-      case 'bestsellers':
-        return getBestSellers()
-      case 'new':
-        return getNewProducts()
-      default:
-        return getFeaturedProducts()
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true)
+      setError(null)
+      try {
+        let result: Product[]
+        switch (activeTab) {
+          case 'bestsellers':
+            const bestSellerResponse = await productService.getProducts({ sort: 'best-selling', limit: 8 })
+            result = bestSellerResponse.data
+            break
+          case 'new':
+            const newResponse = await productService.getProducts({ sort: 'newest', limit: 8 })
+            result = newResponse.data
+            break
+          default:
+            result = await productService.getFeaturedProducts(8)
+        }
+        setProducts(result)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load products')
+      } finally {
+        setLoading(false)
+      }
     }
-  }
 
-  const products = getProducts().slice(0, 8)
+    fetchProducts()
+  }, [activeTab])
 
   return (
     <section className="py-12">
@@ -53,11 +73,21 @@ export function FeaturedProducts() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {products.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="bg-gray-200 animate-pulse rounded-xl h-72" />
+            ))}
+          </div>
+        ) : error ? (
+          <div className="text-center py-8 text-red-500">{error}</div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {products.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
 
         {/* View All Link */}
         <div className="text-center mt-8">

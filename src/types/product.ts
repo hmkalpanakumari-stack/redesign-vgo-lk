@@ -25,14 +25,14 @@ export interface ProductVariant {
 export interface ProductImage {
   id: string
   url: string
-  alt: string
+  altText: string
   isPrimary?: boolean
 }
 
 export interface ProductSpecification {
   label: string
   value: string
-  group?: string
+  groupName?: string
 }
 
 export interface Product {
@@ -69,7 +69,7 @@ export interface Category {
   name: string
   slug: string
   description?: string
-  image?: string
+  imageUrl?: string
   icon?: string
   parentId?: string
   productCount?: number

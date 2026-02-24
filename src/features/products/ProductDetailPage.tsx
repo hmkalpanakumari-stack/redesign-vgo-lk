@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { getProductBySlug, getProductsByCategory } from '@/data/products'
-import { getProductReviews, getRatingDistribution } from '@/data/reviews'
+import { productService, reviewService } from '@/services'
 import { useCart } from '@/context/CartContext'
 import { useUI } from '@/context/UIContext'
 import { formatStock } from '@/utils/formatters'
@@ -15,34 +14,95 @@ import { PriceDisplay, BulkPriceTable, SavingsDisplay } from '@/components/commo
 import { QuantitySelector } from '@/components/common/QuantitySelector'
 import { ReviewList, ReviewSummary } from '@/components/common/ReviewCard'
 import { ImageGallery } from './components/ImageGallery'
-import type { ProductVariant } from '@/types/product'
+import type { Product, ProductVariant } from '@/types/product'
+import type { Review } from '@/types/order'
 
 export function ProductDetailPage() {
   const { id } = useParams()
-  const product = getProductBySlug(id || '')
   const { addItem } = useCart()
   const { showToast } = useUI()
+
+  const [product, setProduct] = useState<Product | null>(null)
+  const [reviews, setReviews] = useState<Review[]>([])
+  const [ratingDistribution, setRatingDistribution] = useState<Record<number, number>>({})
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   const [quantity, setQuantity] = useState(1)
   const [selectedVariants, setSelectedVariants] = useState<Record<string, ProductVariant>>({})
 
-  if (!product) {
+  useEffect(() => {
+    const fetchProduct = async () => {
+      if (!id) return
+      setLoading(true)
+      setError(null)
+      try {
+        // Fetch product by slug
+        const productData = await productService.getProductBySlug(id)
+        setProduct(productData)
+
+        // Fetch reviews
+        try {
+          const reviewsData = await reviewService.getProductReviews(productData.id)
+          setReviews(reviewsData.reviews.data)
+          setRatingDistribution(reviewsData.summary.distribution)
+        } catch {
+          setReviews([])
+          setRatingDistribution({})
+        }
+
+        // Fetch related products
+        try {
+          const relatedResponse = await productService.getProducts({
+            category: productData.category.slug,
+            limit: 5
+          })
+          setRelatedProducts(relatedResponse.data.filter(p => p.id !== productData.id).slice(0, 4))
+        } catch {
+          setRelatedProducts([])
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load product')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProduct()
+  }, [id])
+
+  if (loading) {
+    return (
+      <div className="bg-light-bg min-h-screen">
+        <div className="container py-6">
+          <div className="bg-white rounded-xl shadow-card p-6 mb-8">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="bg-gray-200 animate-pulse rounded-xl h-96" />
+              <div className="space-y-4">
+                <div className="bg-gray-200 animate-pulse h-8 w-3/4 rounded" />
+                <div className="bg-gray-200 animate-pulse h-6 w-1/2 rounded" />
+                <div className="bg-gray-200 animate-pulse h-10 w-1/3 rounded" />
+                <div className="bg-gray-200 animate-pulse h-24 rounded" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !product) {
     return (
       <div className="container py-12 text-center">
         <h1 className="text-2xl font-bold text-dark mb-4">Product Not Found</h1>
-        <p className="text-dark-muted mb-6">The product you're looking for doesn't exist.</p>
+        <p className="text-dark-muted mb-6">{error || "The product you're looking for doesn't exist."}</p>
         <Link to="/products">
           <Button>Browse Products</Button>
         </Link>
       </div>
     )
   }
-
-  const reviews = getProductReviews(product.id)
-  const ratingDistribution = getRatingDistribution(product.id)
-  const relatedProducts = getProductsByCategory(product.category.slug)
-    .filter(p => p.id !== product.id)
-    .slice(0, 4)
 
   // Group variants by type
   const variantsByType = product.variants?.reduce((acc, variant) => {

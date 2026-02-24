@@ -1,6 +1,6 @@
-import { createContext, useContext, useReducer, ReactNode } from 'react'
+import { createContext, useContext, useReducer, useEffect, ReactNode } from 'react'
 import type { User, AuthState } from '@/types/user'
-import { sampleUser } from '@/data/users'
+import { authService } from '@/services'
 
 type AuthAction =
   | { type: 'LOGIN_START' }
@@ -8,10 +8,12 @@ type AuthAction =
   | { type: 'LOGIN_FAILURE'; payload: string }
   | { type: 'LOGOUT' }
   | { type: 'UPDATE_USER'; payload: Partial<User> }
+  | { type: 'SET_LOADING'; payload: boolean }
 
 interface AuthContextType {
   state: AuthState
   login: (email: string, password: string) => Promise<boolean>
+  register: (data: { firstName: string; lastName: string; email: string; phone: string; password: string; confirmPassword: string }) => Promise<boolean>
   logout: () => void
   updateUser: (data: Partial<User>) => void
 }
@@ -56,6 +58,9 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
         user: { ...state.user, ...action.payload },
       }
 
+    case 'SET_LOADING':
+      return { ...state, isLoading: action.payload }
+
     default:
       return state
   }
@@ -66,27 +71,58 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(authReducer, initialState)
 
-  const login = async (email: string, _password: string): Promise<boolean> => {
+  // Check if user is authenticated on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      if (authService.isAuthenticated()) {
+        dispatch({ type: 'SET_LOADING', payload: true })
+        try {
+          const user = await authService.getCurrentUser()
+          dispatch({ type: 'LOGIN_SUCCESS', payload: user })
+        } catch {
+          // Token invalid or expired
+          authService.logout()
+          dispatch({ type: 'LOGOUT' })
+        }
+      }
+    }
+    checkAuth()
+  }, [])
+
+  const login = async (email: string, password: string): Promise<boolean> => {
     dispatch({ type: 'LOGIN_START' })
 
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
-
-    // Mock authentication - accept any email/password for demo
-    if (email) {
-      const user: User = {
-        ...sampleUser,
-        email,
-      }
-      dispatch({ type: 'LOGIN_SUCCESS', payload: user })
+    try {
+      const response = await authService.login({ email, password })
+      dispatch({ type: 'LOGIN_SUCCESS', payload: response.user })
       return true
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Invalid email or password'
+      dispatch({ type: 'LOGIN_FAILURE', payload: message })
+      return false
     }
-
-    dispatch({ type: 'LOGIN_FAILURE', payload: 'Invalid email or password' })
-    return false
   }
 
-  const logout = () => {
+  const register = async (data: { firstName: string; lastName: string; email: string; phone: string; password: string; confirmPassword: string }): Promise<boolean> => {
+    dispatch({ type: 'LOGIN_START' })
+
+    try {
+      const response = await authService.register(data)
+      dispatch({ type: 'LOGIN_SUCCESS', payload: response.user })
+      return true
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Registration failed'
+      dispatch({ type: 'LOGIN_FAILURE', payload: message })
+      return false
+    }
+  }
+
+  const logout = async () => {
+    try {
+      await authService.logout()
+    } catch {
+      // Ignore logout errors
+    }
     dispatch({ type: 'LOGOUT' })
   }
 
@@ -95,7 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ state, login, logout, updateUser }}>
+    <AuthContext.Provider value={{ state, login, register, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   )

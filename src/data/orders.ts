@@ -74,13 +74,12 @@ export const sampleOrders: Order[] = [
   {
     id: 'order-1',
     orderNumber: 'VGO-2024-001234',
-    userId: 'user-1',
     items: [
       {
         id: 'item-1',
         productId: 'prod-1',
         productName: 'iPhone 15 Pro Max 256GB',
-        productImage: 'https://picsum.photos/seed/iphone15-1/600/600',
+        productImageUrl: 'https://picsum.photos/seed/iphone15-1/600/600',
         variantId: 'v-1-1',
         variantName: 'Natural Titanium',
         quantity: 1,
@@ -91,7 +90,7 @@ export const sampleOrders: Order[] = [
         id: 'item-2',
         productId: 'prod-4',
         productName: 'Sony WH-1000XM5 Wireless Headphones',
-        productImage: 'https://picsum.photos/seed/sonyxm5-1/600/600',
+        productImageUrl: 'https://picsum.photos/seed/sonyxm5-1/600/600',
         variantId: 'v-4-1',
         variantName: 'Black',
         quantity: 1,
@@ -101,7 +100,6 @@ export const sampleOrders: Order[] = [
     ],
     shippingAddress: {
       id: 'addr-1',
-      userId: 'user-1',
       label: 'Home',
       firstName: 'John',
       lastName: 'Perera',
@@ -125,12 +123,12 @@ export const sampleOrders: Order[] = [
     couponCode: 'WELCOME5',
     status: 'delivered',
     statusHistory: [
-      { status: 'pending', timestamp: '2024-01-10T10:00:00Z' },
-      { status: 'confirmed', timestamp: '2024-01-10T10:15:00Z' },
-      { status: 'processing', timestamp: '2024-01-10T14:00:00Z' },
-      { status: 'shipped', timestamp: '2024-01-11T09:00:00Z', note: 'Shipped via DHL' },
-      { status: 'out_for_delivery', timestamp: '2024-01-12T08:00:00Z' },
-      { status: 'delivered', timestamp: '2024-01-12T14:30:00Z', note: 'Delivered to customer' },
+      { status: 'pending', createdAt: '2024-01-10T10:00:00Z' },
+      { status: 'confirmed', createdAt: '2024-01-10T10:15:00Z' },
+      { status: 'processing', createdAt: '2024-01-10T14:00:00Z' },
+      { status: 'shipped', createdAt: '2024-01-11T09:00:00Z', note: 'Shipped via DHL' },
+      { status: 'out_for_delivery', createdAt: '2024-01-12T08:00:00Z' },
+      { status: 'delivered', createdAt: '2024-01-12T14:30:00Z', note: 'Delivered to customer' },
     ],
     trackingNumber: 'DHL123456789LK',
     createdAt: '2024-01-10T10:00:00Z',
@@ -139,13 +137,12 @@ export const sampleOrders: Order[] = [
   {
     id: 'order-2',
     orderNumber: 'VGO-2024-001235',
-    userId: 'user-1',
     items: [
       {
         id: 'item-3',
         productId: 'prod-5',
         productName: "Men's Premium Cotton T-Shirt",
-        productImage: 'https://picsum.photos/seed/tshirt-1/600/600',
+        productImageUrl: 'https://picsum.photos/seed/tshirt-1/600/600',
         variantId: 'v-5-1',
         variantName: 'White - M',
         quantity: 3,
@@ -156,7 +153,7 @@ export const sampleOrders: Order[] = [
         id: 'item-4',
         productId: 'prod-8',
         productName: 'Professional Yoga Mat',
-        productImage: 'https://picsum.photos/seed/yogamat-1/600/600',
+        productImageUrl: 'https://picsum.photos/seed/yogamat-1/600/600',
         variantId: 'v-8-1',
         variantName: 'Purple',
         quantity: 1,
@@ -166,7 +163,6 @@ export const sampleOrders: Order[] = [
     ],
     shippingAddress: {
       id: 'addr-1',
-      userId: 'user-1',
       label: 'Home',
       firstName: 'John',
       lastName: 'Perera',
@@ -189,10 +185,10 @@ export const sampleOrders: Order[] = [
     total: 11460,
     status: 'shipped',
     statusHistory: [
-      { status: 'pending', timestamp: '2024-01-15T09:00:00Z' },
-      { status: 'confirmed', timestamp: '2024-01-15T09:10:00Z' },
-      { status: 'processing', timestamp: '2024-01-15T11:00:00Z' },
-      { status: 'shipped', timestamp: '2024-01-16T10:00:00Z' },
+      { status: 'pending', createdAt: '2024-01-15T09:00:00Z' },
+      { status: 'confirmed', createdAt: '2024-01-15T09:10:00Z' },
+      { status: 'processing', createdAt: '2024-01-15T11:00:00Z' },
+      { status: 'shipped', createdAt: '2024-01-16T10:00:00Z' },
     ],
     trackingNumber: 'SPX987654321LK',
     createdAt: '2024-01-15T09:00:00Z',
@@ -202,13 +198,12 @@ export const sampleOrders: Order[] = [
   {
     id: 'order-3',
     orderNumber: 'VGO-2024-001236',
-    userId: 'user-1',
     items: [
       {
         id: 'item-5',
         productId: 'prod-14',
         productName: 'Air Fryer 5.5L Digital',
-        productImage: 'https://picsum.photos/seed/airfryer-1/600/600',
+        productImageUrl: 'https://picsum.photos/seed/airfryer-1/600/600',
         quantity: 1,
         unitPrice: 18900,
         totalPrice: 18900,
@@ -216,7 +211,6 @@ export const sampleOrders: Order[] = [
     ],
     shippingAddress: {
       id: 'addr-2',
-      userId: 'user-1',
       label: 'Office',
       firstName: 'John',
       lastName: 'Perera',
@@ -239,9 +233,9 @@ export const sampleOrders: Order[] = [
     total: 19550,
     status: 'processing',
     statusHistory: [
-      { status: 'pending', timestamp: '2024-01-18T14:00:00Z' },
-      { status: 'confirmed', timestamp: '2024-01-18T14:05:00Z' },
-      { status: 'processing', timestamp: '2024-01-18T16:00:00Z' },
+      { status: 'pending', createdAt: '2024-01-18T14:00:00Z' },
+      { status: 'confirmed', createdAt: '2024-01-18T14:05:00Z' },
+      { status: 'processing', createdAt: '2024-01-18T16:00:00Z' },
     ],
     createdAt: '2024-01-18T14:00:00Z',
     updatedAt: '2024-01-18T16:00:00Z',

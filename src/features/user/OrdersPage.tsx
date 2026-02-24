@@ -1,22 +1,41 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
-import { getUserOrders } from '@/data/orders'
+import { orderService } from '@/services'
 import { formatPrice } from '@/utils/formatters'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
-import type { OrderStatus } from '@/types/order'
+import type { Order, OrderStatus } from '@/types/order'
 
 export function OrdersPage() {
   const { state } = useAuth()
   const [filter, setFilter] = useState<OrderStatus | 'all'>('all')
-  const allOrders = state.user ? getUserOrders(state.user.id) : []
+  const [orders, setOrders] = useState<Order[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const filteredOrders = filter === 'all'
-    ? allOrders
-    : allOrders.filter(order => order.status === filter)
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (!state.isAuthenticated) return
+      setLoading(true)
+      setError(null)
+      try {
+        const status = filter === 'all' ? undefined : filter
+        const response = await orderService.getOrders(1, 50, status)
+        setOrders(response.data)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to load orders')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchOrders()
+  }, [state.isAuthenticated, filter])
+
+  const filteredOrders = orders
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -70,7 +89,24 @@ export function OrdersPage() {
         </div>
 
         {/* Orders List */}
-        {filteredOrders.length === 0 ? (
+        {loading ? (
+          <div className="space-y-4">
+            {[...Array(3)].map((_, i) => (
+              <Card key={i} className="p-6">
+                <div className="animate-pulse space-y-4">
+                  <div className="h-4 bg-gray-200 rounded w-1/4" />
+                  <div className="h-4 bg-gray-200 rounded w-1/2" />
+                  <div className="h-20 bg-gray-200 rounded" />
+                </div>
+              </Card>
+            ))}
+          </div>
+        ) : error ? (
+          <Card className="p-12 text-center">
+            <p className="text-red-500 mb-4">{error}</p>
+            <Button onClick={() => window.location.reload()}>Try Again</Button>
+          </Card>
+        ) : filteredOrders.length === 0 ? (
           <Card className="p-12 text-center">
             <div className="text-6xl mb-4">📦</div>
             <h2 className="text-xl font-semibold text-dark mb-2">No orders found</h2>
@@ -115,7 +151,7 @@ export function OrdersPage() {
                     {order.items.map((item) => (
                       <div key={item.id} className="flex gap-3">
                         <img
-                          src={item.productImage}
+                          src={item.productImageUrl}
                           alt={item.productName}
                           className="w-20 h-20 object-cover rounded"
                         />

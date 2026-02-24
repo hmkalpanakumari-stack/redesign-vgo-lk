@@ -4,7 +4,7 @@ export interface User {
   firstName: string
   lastName: string
   phone?: string
-  avatar?: string
+  avatarUrl?: string
   dateOfBirth?: string
   gender?: 'male' | 'female' | 'other'
   isVerified: boolean
@@ -14,7 +14,6 @@ export interface User {
 
 export interface Address {
   id: string
-  userId: string
   label: string
   firstName: string
   lastName: string

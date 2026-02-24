@@ -60,7 +60,6 @@ export function CheckoutAddressPage() {
       if (!hasErrors(validationErrors)) {
         const newAddress: Address = {
           id: `addr-${Date.now()}`,
-          userId: authState.user?.id || 'guest',
           label: 'Home',
           ...formData,
           country: 'Sri Lanka',

@@ -43,7 +43,7 @@ export interface OrderItem {
   id: string
   productId: string
   productName: string
-  productImage: string
+  productImageUrl?: string
   variantId?: string
   variantName?: string
   quantity: number
@@ -64,14 +64,14 @@ export type OrderStatus =
 
 export interface OrderStatusHistory {
   status: OrderStatus
-  timestamp: string
+  createdAt: string
   note?: string
 }
 
 export interface Order {
   id: string
   orderNumber: string
-  userId: string
+  userId?: string
   items: OrderItem[]
   shippingAddress: Address
   billingAddress?: Address
