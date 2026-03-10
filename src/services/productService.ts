@@ -6,9 +6,10 @@ export interface ProductFilters {
     limit?: number;
     sort?: 'newest' | 'price-low-high' | 'price-high-low' | 'rating' | 'best-selling';
     category?: string;
-    brand?: string;
+    brands?: string[];
     minPrice?: number;
     maxPrice?: number;
+    minRating?: number;
     inStock?: boolean;
     onSale?: boolean;
     search?: string;
@@ -29,7 +30,10 @@ export const productService = {
         const params = new URLSearchParams();
 
         Object.entries(filters).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
+            if (value === undefined || value === null) return;
+            if (Array.isArray(value)) {
+                value.forEach(item => params.append(key, item));
+            } else {
                 params.append(key, value.toString());
             }
         });

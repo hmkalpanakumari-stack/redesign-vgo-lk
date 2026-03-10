@@ -32,6 +32,10 @@ export const orderService = {
         return apiClient.post<Order>('/orders', orderData);
     },
 
+    async cancelOrder(id: string): Promise<void> {
+        await apiClient.patch<void>(`/orders/${id}/cancel`);
+    },
+
     async getShippingMethods(): Promise<ShippingMethod[]> {
         return apiClient.get<ShippingMethod[]>('/shipping-methods');
     },

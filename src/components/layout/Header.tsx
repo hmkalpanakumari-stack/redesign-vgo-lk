@@ -1,17 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { useUI } from '@/context/UIContext'
-import { categories } from '@/data/categories'
+import { categoryService } from '@/services'
+import { categories as staticCategories } from '@/data/categories'
 import { announcementBar } from '@/data/content'
 import { Input } from '@/components/ui/Input'
+import type { Category } from '@/types/product'
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState('')
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoryMenu, setShowCategoryMenu] = useState(false)
+  const [categories, setCategories] = useState<Category[]>(staticCategories)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    categoryService.getCategories()
+      .then(setCategories)
+      .catch(() => setCategories(staticCategories))
+  }, [])
 
   const { itemCount } = useCart()
   const { state: authState, logout } = useAuth()

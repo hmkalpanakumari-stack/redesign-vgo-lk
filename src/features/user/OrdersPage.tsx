@@ -9,16 +9,150 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import type { Order, OrderStatus } from '@/types/order'
 
+function OrderDetailModal({ order, onClose }: { order: Order; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={onClose}>
+      <div
+        className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="sticky top-0 bg-white border-b border-light-border px-6 py-4 flex items-center justify-between">
+          <div>
+            <h2 className="font-bold text-dark text-lg">{order.orderNumber}</h2>
+            <p className="text-sm text-dark-muted">
+              Placed on {new Date(order.createdAt).toLocaleDateString()}
+            </p>
+          </div>
+          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-lg">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="p-6 space-y-5">
+          {/* Items */}
+          <div>
+            <h3 className="font-semibold text-dark mb-3">Items Ordered</h3>
+            <div className="space-y-3">
+              {order.items.map(item => (
+                <div key={item.id} className="flex gap-3">
+                  {item.productImageUrl && (
+                    <img src={item.productImageUrl} alt={item.productName} className="w-16 h-16 object-cover rounded-lg flex-shrink-0" />
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-dark text-sm">{item.productName}</p>
+                    {item.variantName && <p className="text-xs text-dark-muted">{item.variantName}</p>}
+                    <p className="text-xs text-dark-secondary">Qty: {item.quantity} × {formatPrice(item.unitPrice)}</p>
+                  </div>
+                  <p className="font-medium text-dark text-sm flex-shrink-0">{formatPrice(item.totalPrice)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Price Breakdown */}
+          <div className="border-t border-light-border pt-4">
+            <h3 className="font-semibold text-dark mb-3">Order Summary</h3>
+            <div className="space-y-1.5 text-sm">
+              <div className="flex justify-between text-dark-secondary">
+                <span>Subtotal</span><span>{formatPrice(order.subtotal)}</span>
+              </div>
+              <div className="flex justify-between text-dark-secondary">
+                <span>Shipping</span><span>{order.shippingCost === 0 ? 'Free' : formatPrice(order.shippingCost)}</span>
+              </div>
+              {order.discount > 0 && (
+                <div className="flex justify-between text-green-600">
+                  <span>Discount {order.couponCode && `(${order.couponCode})`}</span>
+                  <span>-{formatPrice(order.discount)}</span>
+                </div>
+              )}
+              {order.tax > 0 && (
+                <div className="flex justify-between text-dark-secondary">
+                  <span>Tax</span><span>{formatPrice(order.tax)}</span>
+                </div>
+              )}
+              <div className="flex justify-between font-bold text-dark border-t border-light-border pt-2 mt-2">
+                <span>Total</span><span className="text-primary-orange">{formatPrice(order.total)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Shipping & Payment */}
+          <div className="grid grid-cols-2 gap-4 border-t border-light-border pt-4">
+            <div>
+              <h3 className="font-semibold text-dark mb-2 text-sm">Shipping Address</h3>
+              <p className="text-sm text-dark">{order.shippingAddress.firstName} {order.shippingAddress.lastName}</p>
+              <p className="text-sm text-dark-secondary">{order.shippingAddress.addressLine1}</p>
+              {order.shippingAddress.addressLine2 && (
+                <p className="text-sm text-dark-secondary">{order.shippingAddress.addressLine2}</p>
+              )}
+              <p className="text-sm text-dark-secondary">{order.shippingAddress.city}, {order.shippingAddress.district}</p>
+              <p className="text-sm text-dark-secondary">{order.shippingAddress.phone}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-dark mb-2 text-sm">Delivery</h3>
+              <p className="text-sm text-dark">{order.shippingMethod.name}</p>
+              <p className="text-sm text-dark-secondary">{order.shippingMethod.estimatedDays}</p>
+              {order.estimatedDelivery && (
+                <p className="text-sm text-dark-secondary mt-1">
+                  Est. {new Date(order.estimatedDelivery).toLocaleDateString()}
+                </p>
+              )}
+              {order.trackingNumber && (
+                <p className="text-sm text-dark-secondary mt-1">
+                  Tracking: <span className="font-medium">{order.trackingNumber}</span>
+                </p>
+              )}
+              <h3 className="font-semibold text-dark mb-1 mt-3 text-sm">Payment</h3>
+              <p className="text-sm text-dark">{order.paymentMethod.name}</p>
+            </div>
+          </div>
+
+          {/* Status History */}
+          {order.statusHistory && order.statusHistory.length > 0 && (
+            <div className="border-t border-light-border pt-4">
+              <h3 className="font-semibold text-dark mb-3 text-sm">Order Timeline</h3>
+              <div className="space-y-2">
+                {[...order.statusHistory].reverse().map((h, i) => (
+                  <div key={i} className="flex gap-3 text-sm">
+                    <div className="flex flex-col items-center">
+                      <div className="w-2 h-2 rounded-full bg-primary-orange mt-1.5 flex-shrink-0" />
+                      {i < order.statusHistory.length - 1 && <div className="w-px flex-1 bg-light-border mt-1" />}
+                    </div>
+                    <div className="pb-2">
+                      <p className="font-medium text-dark capitalize">{h.status.replace('_', ' ')}</p>
+                      {h.note && <p className="text-dark-muted text-xs">{h.note}</p>}
+                      <p className="text-dark-muted text-xs">{new Date(h.createdAt).toLocaleString()}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function OrdersPage() {
   const { state } = useAuth()
   const [filter, setFilter] = useState<OrderStatus | 'all'>('all')
   const [orders, setOrders] = useState<Order[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+  const [cancellingId, setCancellingId] = useState<string | null>(null)
+  const [cancelError, setCancelError] = useState<string | null>(null)
+  const [confirmCancelId, setConfirmCancelId] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchOrders = async () => {
-      if (!state.isAuthenticated) return
+      if (!state.isAuthenticated) {
+        setLoading(false)
+        return
+      }
       setLoading(true)
       setError(null)
       try {
@@ -35,7 +169,22 @@ export function OrdersPage() {
     fetchOrders()
   }, [state.isAuthenticated, filter])
 
-  const filteredOrders = orders
+  const handleCancelOrder = async (orderId: string) => {
+    setCancellingId(orderId)
+    setCancelError(null)
+    setConfirmCancelId(null)
+    try {
+      await orderService.cancelOrder(orderId)
+      setOrders(prev => prev.map(o => o.id === orderId ? { ...o, status: 'cancelled' as OrderStatus } : o))
+      if (selectedOrder?.id === orderId) {
+        setSelectedOrder(prev => prev ? { ...prev, status: 'cancelled' as OrderStatus } : null)
+      }
+    } catch (err) {
+      setCancelError(err instanceof Error ? err.message : 'Failed to cancel order')
+    } finally {
+      setCancellingId(null)
+    }
+  }
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -46,6 +195,7 @@ export function OrdersPage() {
   const statusFilters: Array<{ label: string; value: OrderStatus | 'all' }> = [
     { label: 'All', value: 'all' },
     { label: 'Pending', value: 'pending' },
+    { label: 'Confirmed', value: 'confirmed' },
     { label: 'Processing', value: 'processing' },
     { label: 'Shipped', value: 'shipped' },
     { label: 'Delivered', value: 'delivered' },
@@ -106,7 +256,7 @@ export function OrdersPage() {
             <p className="text-red-500 mb-4">{error}</p>
             <Button onClick={() => window.location.reload()}>Try Again</Button>
           </Card>
-        ) : filteredOrders.length === 0 ? (
+        ) : orders.length === 0 ? (
           <Card className="p-12 text-center">
             <div className="text-6xl mb-4">📦</div>
             <h2 className="text-xl font-semibold text-dark mb-2">No orders found</h2>
@@ -121,7 +271,7 @@ export function OrdersPage() {
           </Card>
         ) : (
           <div className="space-y-4">
-            {filteredOrders.map((order) => (
+            {orders.map((order) => (
               <Card key={order.id} className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
@@ -150,11 +300,13 @@ export function OrdersPage() {
                   <div className="flex gap-3 flex-wrap">
                     {order.items.map((item) => (
                       <div key={item.id} className="flex gap-3">
-                        <img
-                          src={item.productImageUrl}
-                          alt={item.productName}
-                          className="w-20 h-20 object-cover rounded"
-                        />
+                        {item.productImageUrl && (
+                          <img
+                            src={item.productImageUrl}
+                            alt={item.productName}
+                            className="w-20 h-20 object-cover rounded"
+                          />
+                        )}
                         <div className="flex-1">
                           <p className="font-medium text-dark text-sm">{item.productName}</p>
                           {item.variantName && (
@@ -191,14 +343,50 @@ export function OrdersPage() {
                   </div>
                 </div>
 
+                {/* Cancel error */}
+                {cancelError && confirmCancelId === order.id && (
+                  <p className="text-red-500 text-sm mt-3">{cancelError}</p>
+                )}
+
                 {/* Actions */}
-                <div className="border-t border-light-border pt-4 mt-4 flex gap-2">
-                  <Button variant="outline" size="sm">View Details</Button>
+                <div className="border-t border-light-border pt-4 mt-4 flex flex-wrap items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setSelectedOrder(order)}
+                  >
+                    View Details
+                  </Button>
                   {order.status === 'delivered' && (
                     <Button variant="outline" size="sm">Reorder</Button>
                   )}
                   {['pending', 'confirmed'].includes(order.status) && (
-                    <Button variant="outline" size="sm">Cancel Order</Button>
+                    confirmCancelId === order.id ? (
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm text-dark-muted">Cancel this order?</span>
+                        <button
+                          onClick={() => handleCancelOrder(order.id)}
+                          disabled={cancellingId === order.id}
+                          className="px-3 py-1.5 text-sm font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 disabled:opacity-50"
+                        >
+                          {cancellingId === order.id ? 'Cancelling...' : 'Yes, Cancel'}
+                        </button>
+                        <button
+                          onClick={() => { setConfirmCancelId(null); setCancelError(null) }}
+                          disabled={cancellingId === order.id}
+                          className="px-3 py-1.5 text-sm font-medium rounded-lg border border-light-border text-dark-secondary hover:bg-gray-50 disabled:opacity-50"
+                        >
+                          Keep Order
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => { setConfirmCancelId(order.id); setCancelError(null) }}
+                        className="px-3 py-1.5 text-sm font-medium rounded-lg border border-red-300 text-red-600 hover:bg-red-50"
+                      >
+                        Cancel Order
+                      </button>
+                    )
                   )}
                 </div>
               </Card>
@@ -206,6 +394,13 @@ export function OrdersPage() {
           </div>
         )}
       </div>
+
+      {selectedOrder && (
+        <OrderDetailModal
+          order={selectedOrder}
+          onClose={() => setSelectedOrder(null)}
+        />
+      )}
     </div>
   )
 }

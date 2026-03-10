@@ -48,7 +48,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policy => policy.RequireClaim("is_admin", "true"));
+});
 
 // Configure CORS
 builder.Services.AddCors(options =>
@@ -91,6 +94,7 @@ app.MapCategoryEndpoints();
 app.MapOrderEndpoints();
 app.MapCouponEndpoints();
 app.MapReviewEndpoints();
+app.MapAdminEndpoints();
 
 // Health check endpoint
 app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }))

@@ -19,9 +19,10 @@ public static class ProductEndpoints
             [FromQuery] int limit = 20,
             [FromQuery] string? sort = "newest",
             [FromQuery] string? category = null,
-            [FromQuery] string? brand = null,
+            [FromQuery] string[]? brands = null,
             [FromQuery] decimal? minPrice = null,
             [FromQuery] decimal? maxPrice = null,
+            [FromQuery] decimal? minRating = null,
             [FromQuery] bool? inStock = null,
             [FromQuery] bool? onSale = null,
             [FromQuery] string? search = null) =>
@@ -35,12 +36,38 @@ public static class ProductEndpoints
             // Apply filters
             if (!string.IsNullOrEmpty(category))
             {
-                query = query.Where(p => p.Category.Slug == category);
+                // Check if this slug belongs to a subcategory
+                var matchedCat = await db.Categories.FirstOrDefaultAsync(c => c.Slug == category);
+                if (matchedCat?.ParentId != null)
+                {
+                    // Subcategory: filter by parent CategoryId + SubCategory name
+                    query = query.Where(p => p.CategoryId == matchedCat.ParentId && p.SubCategory == matchedCat.Name);
+                }
+                else
+                {
+                    // Main category: show all products whose category slug matches
+                    query = query.Where(p => p.Category.Slug == category);
+                }
             }
 
-            if (!string.IsNullOrEmpty(brand))
+            if (brands != null && brands.Length > 0)
             {
-                query = query.Where(p => p.Brand == brand);
+                query = query.Where(p => brands.Contains(p.Brand));
+            }
+
+            if (minPrice.HasValue)
+            {
+                query = query.Where(p => p.Prices.Any(pr => pr.IsActive && pr.Amount >= minPrice.Value));
+            }
+
+            if (maxPrice.HasValue)
+            {
+                query = query.Where(p => p.Prices.Any(pr => pr.IsActive && pr.Amount <= maxPrice.Value));
+            }
+
+            if (minRating.HasValue)
+            {
+                query = query.Where(p => p.Rating >= minRating.Value);
             }
 
             if (inStock == true)
@@ -55,7 +82,8 @@ public static class ProductEndpoints
 
             if (!string.IsNullOrEmpty(search))
             {
-                query = query.Where(p => p.Name.Contains(search) || p.Description.Contains(search));
+                var searchLower = search.ToLower();
+                query = query.Where(p => p.Name.ToLower().Contains(searchLower) || p.Description.ToLower().Contains(searchLower));
             }
 
             // Apply sorting

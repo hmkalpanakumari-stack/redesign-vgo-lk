@@ -9,6 +9,7 @@ namespace VgoApi.Services;
 public interface IJwtService
 {
     string GenerateToken(User user);
+    string GenerateAdminToken(string email, string name);
     ClaimsPrincipal? ValidateToken(string token);
 }
 
@@ -48,6 +49,27 @@ public class JwtService : IJwtService
             signingCredentials: credentials
         );
 
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    public string GenerateAdminToken(string email, string name)
+    {
+        var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured"));
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.NameIdentifier, "admin"),
+            new Claim(ClaimTypes.Email, email),
+            new Claim(ClaimTypes.Name, name),
+            new Claim("is_admin", "true"),   // simple custom claim, avoids role mapping issues
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(8),
+            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+        );
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 

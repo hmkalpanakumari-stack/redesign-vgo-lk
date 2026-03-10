@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams, useNavigate } from 'react-router-dom'
 import { productService, categoryService } from '@/services'
 import { useFilters } from '@/hooks/useFilters'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
@@ -24,6 +24,7 @@ const sortOptions = [
 export function ProductListPage() {
   const { category: categorySlug } = useParams()
   const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const searchQuery = searchParams.get('search') || ''
   const saleOnly = searchParams.get('sale') === 'true'
   const newOnly = searchParams.get('new') === 'true'
@@ -44,7 +45,6 @@ export function ProductListPage() {
     filters,
     sort,
     setSort,
-    toggleCategory,
     toggleBrand,
     toggleColor,
     toggleRating,
@@ -55,6 +55,11 @@ export function ProductListPage() {
     clearFilter,
     activeFilterCount,
   } = useFilters()
+
+  // Reset to page 1 when URL params or any sidebar filter changes
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchQuery, categorySlug, saleOnly, newOnly, filters])
 
   // Fetch category info
   useEffect(() => {
@@ -81,8 +86,9 @@ export function ProductListPage() {
         onSale: saleOnly || filters.onSale || undefined,
         inStock: filters.inStock || undefined,
         minPrice: filters.priceRange && filters.priceRange.min > 0 ? filters.priceRange.min : undefined,
-        maxPrice: filters.priceRange && filters.priceRange.max < 100000 ? filters.priceRange.max : undefined,
-        brand: filters.brands && filters.brands.length > 0 ? filters.brands[0] : undefined,
+        maxPrice: filters.priceRange && filters.priceRange.max !== Infinity ? filters.priceRange.max : undefined,
+        brands: filters.brands && filters.brands.length > 0 ? filters.brands : undefined,
+        minRating: filters.ratings && filters.ratings.length > 0 ? Math.min(...filters.ratings) : undefined,
       })
       setProducts(response.data)
       setTotalProducts(response.total)
@@ -131,14 +137,15 @@ export function ProductListPage() {
           <aside className="hidden lg:block w-64 flex-shrink-0">
             <FilterSidebar
               filters={filters}
-              onToggleCategory={toggleCategory}
+              activeCategorySlug={categorySlug}
+              onToggleCategory={(slug) => navigate(`/products/${slug}`)}
               onToggleBrand={toggleBrand}
               onToggleColor={toggleColor}
               onToggleRating={toggleRating}
               onSetPriceRange={setPriceRange}
               onSetInStock={setInStock}
               onSetOnSale={setOnSale}
-              onClearFilters={clearFilters}
+              onClearFilters={() => { clearFilters(); navigate('/products') }}
             />
           </aside>
 
@@ -149,7 +156,7 @@ export function ProductListPage() {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <h1 className="text-xl font-bold text-dark">
-                    {category?.name || searchQuery ? `Search: "${searchQuery}"` : saleOnly ? 'Flash Deals' : newOnly ? 'New Arrivals' : 'All Products'}
+                    {searchQuery ? `Search: "${searchQuery}"` : category?.name || (saleOnly ? 'Flash Deals' : newOnly ? 'New Arrivals' : 'All Products')}
                   </h1>
                   <p className="text-sm text-dark-muted mt-1">
                     {totalProducts} product{totalProducts !== 1 ? 's' : ''} found
@@ -278,7 +285,7 @@ export function ProductListPage() {
                 <h3 className="text-lg font-semibold text-dark mb-2">No products found</h3>
                 <p className="text-dark-muted mb-4">Try adjusting your filters or search terms</p>
                 <button
-                  onClick={clearFilters}
+                  onClick={() => { clearFilters(); navigate('/products') }}
                   className="text-primary-orange hover:underline"
                 >
                   Clear all filters
@@ -308,14 +315,15 @@ export function ProductListPage() {
             <div className="p-4">
               <FilterSidebar
                 filters={filters}
-                onToggleCategory={toggleCategory}
+                activeCategorySlug={categorySlug}
+                onToggleCategory={(slug) => { navigate(`/products/${slug}`); setShowMobileFilters(false) }}
                 onToggleBrand={toggleBrand}
                 onToggleColor={toggleColor}
                 onToggleRating={toggleRating}
                 onSetPriceRange={setPriceRange}
                 onSetInStock={setInStock}
                 onSetOnSale={setOnSale}
-                onClearFilters={clearFilters}
+                onClearFilters={() => { clearFilters(); navigate('/products'); setShowMobileFilters(false) }}
               />
             </div>
           </div>

@@ -1,5 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
 import { PageLayout } from '@/components/layout/PageLayout'
+import { AdminLoginPage } from '@/features/admin/AdminLoginPage'
+import { AdminLayout } from '@/features/admin/AdminLayout'
+import { AdminDashboardPage } from '@/features/admin/AdminDashboardPage'
+import { AdminOrdersPage } from '@/features/admin/AdminOrdersPage'
+import { AdminProductAddPage } from '@/features/admin/AdminProductAddPage'
+import { AdminProductsPage } from '@/features/admin/AdminProductsPage'
+import { AdminUsersPage } from '@/features/admin/AdminUsersPage'
 import { HomePage } from '@/features/home/HomePage'
 import { ProductListPage } from '@/features/products/ProductListPage'
 import { ProductDetailPage } from '@/features/products/ProductDetailPage'
@@ -43,6 +50,15 @@ export function AppRouter() {
         <Route path="account/profile" element={<ProfilePage />} />
         <Route path="account/addresses" element={<AddressesPage />} />
         <Route path="account/notifications" element={<NotificationsPage />} />
+      </Route>
+      {/* Admin Panel */}
+      <Route path="/admin/login" element={<AdminLoginPage />} />
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<AdminDashboardPage />} />
+        <Route path="orders" element={<AdminOrdersPage />} />
+        <Route path="products" element={<AdminProductsPage />} />
+        <Route path="products/add" element={<AdminProductAddPage />} />
+        <Route path="users" element={<AdminUsersPage />} />
       </Route>
     </Routes>
   )

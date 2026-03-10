@@ -183,6 +183,42 @@ public static class OrderEndpoints
         .WithName("CreateOrder")
         .WithOpenApi();
 
+        // Cancel order
+        group.MapPatch("/orders/{id:guid}/cancel", async (Guid id, HttpContext context, VgoDbContext db) =>
+        {
+            var userIdClaim = context.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !Guid.TryParse(userIdClaim.Value, out var userId))
+                return Results.Unauthorized();
+
+            // Check order exists and belongs to user
+            var currentStatus = await db.Orders
+                .Where(o => o.Id == id && o.UserId == userId)
+                .Select(o => o.Status)
+                .FirstOrDefaultAsync();
+
+            if (currentStatus == null)
+                return Results.NotFound(new ApiResponse<object>(false, null, "Order not found"));
+
+            if (!new[] { "pending", "confirmed" }.Contains(currentStatus))
+                return Results.BadRequest(new ApiResponse<object>(false, null, "Order cannot be cancelled at this stage"));
+
+            // Use raw SQL to avoid EF Core change-tracking issues entirely
+            var now = DateTime.UtcNow;
+            var historyId = Guid.NewGuid();
+
+            await db.Database.ExecuteSqlInterpolatedAsync(
+                $@"UPDATE ""Orders"" SET ""Status"" = 'cancelled', ""UpdatedAt"" = {now} WHERE ""Id"" = {id}");
+
+            await db.Database.ExecuteSqlInterpolatedAsync(
+                $@"INSERT INTO ""OrderStatusHistories"" (""Id"", ""OrderId"", ""Status"", ""Note"", ""CreatedAt"")
+                   VALUES ({historyId}, {id}, 'cancelled', 'Cancelled by customer', {now})");
+
+            return Results.Ok(new ApiResponse<object>(true, new { status = "cancelled" }));
+        })
+        .RequireAuthorization()
+        .WithName("CancelOrder")
+        .WithOpenApi();
+
         // Get shipping methods
         group.MapGet("/shipping-methods", async (VgoDbContext db) =>
         {

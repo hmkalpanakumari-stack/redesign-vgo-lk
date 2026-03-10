@@ -279,3 +279,90 @@ public record ReviewSummaryDto(
     int TotalReviews,
     Dictionary<int, int> Distribution
 );
+
+// Admin DTOs
+public record AdminLoginRequest(string Email, string Password);
+
+public record AdminStatsDto(
+    int TotalOrders,
+    int TotalUsers,
+    int TotalProducts,
+    decimal TotalRevenue,
+    int PendingOrders,
+    int ProcessingOrders
+);
+
+public record AdminOrderDto(
+    Guid Id,
+    string OrderNumber,
+    string CustomerName,
+    string CustomerEmail,
+    decimal Total,
+    string Status,
+    int ItemCount,
+    DateTime CreatedAt
+);
+
+public record UpdateOrderStatusRequest(string Status, string? Note = null);
+
+public record CreateProductRequest(
+    string Name,
+    string Slug,
+    string Description,
+    string? ShortDescription,
+    Guid CategoryId,
+    string? SubCategory,
+    string? Brand,
+    string Sku,
+    int Stock,
+    decimal Price,
+    decimal? OriginalPrice,
+    string? ImageUrl,
+    bool IsFeatured = false,
+    bool IsNew = true,
+    bool IsOnSale = false,
+    bool IsBestSeller = false,
+    string? Warranty = null,
+    string? DeliveryInfo = null
+);
+
+public record AdminUserDto(
+    Guid Id,
+    string Email,
+    string FirstName,
+    string LastName,
+    string? Phone,
+    bool IsVerified,
+    int OrderCount,
+    DateTime CreatedAt
+);
+
+public record AdminUserDetailDto(
+    UserDto User,
+    List<AdminOrderDto> Orders,
+    int TotalOrders,
+    decimal TotalSpent
+);
+
+public record AdminProductListDto(
+    Guid Id,
+    string Name,
+    string Slug,
+    string? Brand,
+    string CategoryName,
+    int Stock,
+    decimal Price,
+    bool IsOnSale,
+    bool IsFeatured,
+    bool IsNew,
+    bool IsBestSeller,
+    DateTime CreatedAt
+);
+
+public record UpdateProductStatusRequest(
+    int? Stock,
+    bool IsFeatured,
+    bool IsNew,
+    bool IsOnSale,
+    bool IsBestSeller
+);

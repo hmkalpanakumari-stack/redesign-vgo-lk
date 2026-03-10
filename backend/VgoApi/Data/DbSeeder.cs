@@ -139,17 +139,36 @@ public static class DbSeeder
             new Category { Id = Guid.NewGuid(), Name = "Laptops", Slug = "laptops", ParentId = categories[0].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
             new Category { Id = Guid.NewGuid(), Name = "Audio", Slug = "audio", ParentId = categories[0].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
             new Category { Id = Guid.NewGuid(), Name = "Wearables", Slug = "wearables", ParentId = categories[0].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Tablets", Slug = "tablets", ParentId = categories[0].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Gaming", Slug = "gaming", ParentId = categories[0].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Cameras", Slug = "cameras", ParentId = categories[0].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Drones", Slug = "drones", ParentId = categories[0].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
             // Fashion subcategories
             new Category { Id = Guid.NewGuid(), Name = "Men's Clothing", Slug = "mens-clothing", ParentId = categories[1].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
             new Category { Id = Guid.NewGuid(), Name = "Women's Clothing", Slug = "womens-clothing", ParentId = categories[1].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
             new Category { Id = Guid.NewGuid(), Name = "Shoes", Slug = "shoes", ParentId = categories[1].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
             new Category { Id = Guid.NewGuid(), Name = "Watches", Slug = "watches", ParentId = categories[1].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            // Home subcategories
+            new Category { Id = Guid.NewGuid(), Name = "Accessories", Slug = "accessories", ParentId = categories[1].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            // Home & Living subcategories
             new Category { Id = Guid.NewGuid(), Name = "Furniture", Slug = "furniture", ParentId = categories[2].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
             new Category { Id = Guid.NewGuid(), Name = "Kitchen", Slug = "kitchen", ParentId = categories[2].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            // Sports subcategories
+            new Category { Id = Guid.NewGuid(), Name = "Appliances", Slug = "appliances", ParentId = categories[2].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Bedding", Slug = "bedding", ParentId = categories[2].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Home Electronics", Slug = "home-electronics", ParentId = categories[2].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            // Sports & Outdoors subcategories
             new Category { Id = Guid.NewGuid(), Name = "Fitness", Slug = "fitness", ParentId = categories[3].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Category { Id = Guid.NewGuid(), Name = "Outdoor Gear", Slug = "outdoor-gear", ParentId = categories[3].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+            new Category { Id = Guid.NewGuid(), Name = "Outdoor Gear", Slug = "outdoor-gear", ParentId = categories[3].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Camping", Slug = "camping", ParentId = categories[3].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            // Beauty & Health subcategories
+            new Category { Id = Guid.NewGuid(), Name = "Skincare", Slug = "skincare", ParentId = categories[4].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Hair Care", Slug = "hair-care", ParentId = categories[4].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Dental Care", Slug = "dental-care", ParentId = categories[4].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Wellness", Slug = "wellness", ParentId = categories[4].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            // Toys & Games subcategories
+            new Category { Id = Guid.NewGuid(), Name = "Building Sets", Slug = "building-sets", ParentId = categories[5].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Board Games", Slug = "board-games", ParentId = categories[5].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Drones", Slug = "toy-drones", ParentId = categories[5].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
+            new Category { Id = Guid.NewGuid(), Name = "Vehicles", Slug = "vehicles", ParentId = categories[5].Id, ProductCount = 0, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
         };
 
         categories.AddRange(subcategories);
@@ -474,7 +493,7 @@ public static class DbSeeder
 
         // 21. Michael Kors Handbag
         products.Add(CreateProduct(
-            "Michael Kors Jet Set Travel Tote", "michael-kors-jet-set-tote", fashion.Id, "Women's Accessories", "Michael Kors",
+            "Michael Kors Jet Set Travel Tote", "michael-kors-jet-set-tote", fashion.Id, "Accessories", "Michael Kors",
             "Sophisticated saffiano leather tote with signature logo hardware and multiple pockets.",
             "Saffiano Leather, Zip-top Closure, Multiple Pockets",
             54900, 64900, 15, 40, "michael-kors-tote.jpg",
@@ -494,7 +513,7 @@ public static class DbSeeder
 
         // 23. H&M Oversized Hoodie
         products.Add(CreateProduct(
-            "H&M Oversized Cotton Hoodie", "hm-oversized-hoodie", fashion.Id, "Unisex", "H&M",
+            "H&M Oversized Cotton Hoodie", "hm-oversized-hoodie", fashion.Id, "Men's Clothing", "H&M",
             "Relaxed fit hoodie in soft cotton blend with kangaroo pocket and ribbed trims.",
             "Cotton Blend, Oversized Fit, Kangaroo Pocket",
             7900, 9900, 20, 150, "hm-hoodie.jpg",
@@ -616,7 +635,7 @@ public static class DbSeeder
 
         // 35. LG 55" OLED TV
         products.Add(CreateProduct(
-            "LG 55\" OLED evo C3 4K Smart TV", "lg-oled-c3-55", homeLiving.Id, "Electronics", "LG",
+            "LG 55\" OLED evo C3 4K Smart TV", "lg-oled-c3-55", homeLiving.Id, "Home Electronics", "LG",
             "Self-lit OLED pixels for perfect blacks and infinite contrast. a9 Gen6 AI Processor.",
             "55\" OLED evo, a9 Gen6 AI, Dolby Vision IQ",
             449900, 499900, 10, 20, "lg-oled-c3.jpg",
